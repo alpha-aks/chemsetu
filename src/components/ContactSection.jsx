@@ -3,8 +3,8 @@ import { MapPin, Phone, Mail, Send } from 'lucide-react';
 
 const ContactSection = () => {
   return (
-    <section className="bg-white py-16 px-4">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+    <section className="relative py-20 px-4 min-h-screen flex items-center">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 w-full">
         {/* Left Column */}
         <div className="flex flex-col justify-center">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-12 leading-tight">
@@ -13,8 +13,8 @@ const ContactSection = () => {
 
           <div className="space-y-6">
             {/* Address Card */}
-            <div className="bg-white rounded-2xl shadow-lg p-6 flex items-start gap-4 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
-              <div className="bg-green-50 p-3 rounded-xl shrink-0">
+            <div className="bg-white/60 backdrop-blur-md rounded-2xl shadow-lg p-6 flex items-start gap-4 border border-white/50 hover:shadow-xl transition-all duration-300 hover:bg-white/80">
+              <div className="bg-green-50/80 p-3 rounded-xl shrink-0">
                 <MapPin className="w-6 h-6 text-green-600" />
               </div>
               <div>
@@ -26,8 +26,8 @@ const ContactSection = () => {
             </div>
 
             {/* Phone Card */}
-            <div className="bg-white rounded-2xl shadow-lg p-6 flex items-center gap-4 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
-              <div className="bg-green-50 p-3 rounded-xl shrink-0">
+            <div className="bg-white/60 backdrop-blur-md rounded-2xl shadow-lg p-6 flex items-center gap-4 border border-white/50 hover:shadow-xl transition-all duration-300 hover:bg-white/80">
+              <div className="bg-green-50/80 p-3 rounded-xl shrink-0">
                 <Phone className="w-6 h-6 text-green-600" />
               </div>
               <div>
@@ -39,8 +39,8 @@ const ContactSection = () => {
             </div>
 
             {/* Mail Card */}
-            <div className="bg-white rounded-2xl shadow-lg p-6 flex items-center gap-4 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
-              <div className="bg-green-50 p-3 rounded-xl shrink-0">
+            <div className="bg-white/60 backdrop-blur-md rounded-2xl shadow-lg p-6 flex items-center gap-4 border border-white/50 hover:shadow-xl transition-all duration-300 hover:bg-white/80">
+              <div className="bg-green-50/80 p-3 rounded-xl shrink-0">
                 <Mail className="w-6 h-6 text-green-600" />
               </div>
               <div>
@@ -54,65 +54,70 @@ const ContactSection = () => {
         </div>
 
         {/* Right Column - Contact Form */}
-        <div className="bg-white rounded-3xl shadow-xl p-8 md:p-10 border border-gray-100">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Send a Message</h2>
+        <div className="bg-white/40 backdrop-blur-xl rounded-3xl shadow-2xl p-8 md:p-10 border border-white/50 relative overflow-hidden">
+          {/* Subtle gradient overlay for the form card */}
+          <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-transparent pointer-events-none" />
           
-          <form className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="relative z-10">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Send a Message</h2>
+            
+            <form className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+                  <input 
+                    type="text" 
+                    className="w-full px-4 py-3 rounded-xl border border-gray-200/50 bg-white/50 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all backdrop-blur-sm"
+                    placeholder="John"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+                  <input 
+                    type="text" 
+                    className="w-full px-4 py-3 rounded-xl border border-gray-200/50 bg-white/50 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all backdrop-blur-sm"
+                    placeholder="Doe"
+                  />
+                </div>
+              </div>
+
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
                 <input 
-                  type="text" 
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
-                  placeholder="John"
+                  type="email" 
+                  className="w-full px-4 py-3 rounded-xl border border-gray-200/50 bg-white/50 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all backdrop-blur-sm"
+                  placeholder="john@example.com"
                 />
               </div>
+
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
-                <input 
-                  type="text" 
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
-                  placeholder="Doe"
-                />
+                <label className="block text-sm font-medium text-gray-700 mb-2">Interest</label>
+                <select className="w-full px-4 py-3 rounded-xl border border-gray-200/50 bg-white/50 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all backdrop-blur-sm">
+                  <option>Custom Synthesis</option>
+                  <option>API Intermediates</option>
+                  <option>Process Development</option>
+                  <option>Other</option>
+                </select>
               </div>
-            </div>
 
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
-              <input 
-                type="email" 
-                className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
-                placeholder="john@example.com"
-              />
-            </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                <textarea 
+                  rows="4"
+                  className="w-full px-4 py-3 rounded-xl border border-gray-200/50 bg-white/50 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all resize-none backdrop-blur-sm"
+                  placeholder="How can we help you?"
+                ></textarea>
+              </div>
 
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Interest</label>
-              <select className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all bg-white">
-                <option>Custom Synthesis</option>
-                <option>API Intermediates</option>
-                <option>Process Development</option>
-                <option>Other</option>
-              </select>
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
-              <textarea 
-                rows="4"
-                className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all resize-none"
-                placeholder="How can we help you?"
-              ></textarea>
-            </div>
-
-            <button 
-              type="submit" 
-              className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 rounded-xl transition-colors flex items-center justify-center gap-2 shadow-lg shadow-blue-200"
-            >
-              <Send className="w-5 h-5" />
-              Send Message
-            </button>
-          </form>
+              <button 
+                type="submit" 
+                className="w-full bg-blue-600/90 hover:bg-blue-600 text-white font-bold py-4 rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-blue-200 backdrop-blur-sm hover:scale-[1.02] active:scale-[0.98]"
+              >
+                <Send className="w-5 h-5" />
+                Send Message
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </section>
