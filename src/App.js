@@ -12,6 +12,7 @@ import ContactSection from './components/ContactSection';
 import Admin from './components/Admin';
 import TrustSection from './components/TrustSection';
 import Footer from './components/Footer';
+import BackgroundElements from './components/BackgroundElements';
 import './App.css';
 
 const HomePage = () => (
@@ -28,7 +29,8 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
-      <div className="App">
+      <BackgroundElements />
+      <div className="App relative">
         <Navbar />
         <main>
           <Routes>
