@@ -67,7 +67,7 @@ const HeroSection = () => {
           
           {/* Right side - Image (50% on mobile) */}
           <motion.div 
-            className="relative h-auto lg:h-full w-full flex items-center justify-center z-0"
+            className="relative h-[50vh] lg:h-full w-full flex items-center justify-center z-0"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}

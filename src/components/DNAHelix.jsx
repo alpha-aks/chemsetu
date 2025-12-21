@@ -94,7 +94,7 @@ const DNAStrand = () => {
 
 const DNAHelix = () => {
   return (
-    <div className="w-full h-[500px] lg:h-full min-h-[500px]">
+    <div className="w-full h-[50vh] lg:h-full">
       <Canvas 
         camera={{ position: [0, 0, 8], fov: 45 }} 
         gl={{ alpha: true, antialias: true, powerPreference: "high-performance" }}
