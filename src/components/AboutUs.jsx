@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Microscope, Globe, ChevronRight, ArrowRight, Quote } from 'lucide-react';
 
@@ -11,8 +12,7 @@ const teamMembers = [
     experience: "19+ Years in Research & Industry",
     companies: "Lupin, Nycomed, Teva, Emcure, Deepak Nitrite",
     expertise: "Synthetic Strategies, Process Development, Technology Transfer, Polypeptides",
-    achievements: "He has several patents and research articles to his credit.",
-    image: "https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&q=80&w=800"
+    achievements: "He has several patents and research articles to his credit."
   },
   {
     name: "Mrs. Rupali Mahangare",
@@ -21,8 +21,7 @@ const teamMembers = [
     experience: "10+ Years in Research & Industry",
     companies: "Glenmark Pharmaceuticals, Getz Pharma, Emcure Pharma Ltd",
     expertise: "Synthetic Strategies, Documentation, Patent Filing",
-    achievements: "Actively involved in patent documentation and filing.",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800"
+    achievements: "Actively involved in patent documentation and filing."
   }
 ];
 
@@ -47,17 +46,10 @@ const TeamMemberProfile = ({ member }) => {
   return (
     <motion.div 
       variants={fadeInUp}
-      className="flex flex-col md:flex-row items-start gap-8 md:gap-12 bg-white p-8 md:p-10 rounded-3xl shadow-sm border border-slate-100"
+      className="flex flex-col items-start gap-8 bg-white p-8 md:p-10 rounded-3xl shadow-sm border border-slate-100"
     >
-      {/* Image Section */}
-      <div className="w-full md:w-1/3 flex-shrink-0">
-        <div className="relative rounded-2xl overflow-hidden aspect-[3/4] md:aspect-auto md:h-[350px]">
-          <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
-        </div>
-      </div>
-
       {/* Content Section */}
-      <div className="w-full md:w-2/3 flex flex-col">
+      <div className="w-full flex flex-col">
         <div className="mb-6">
           <h3 className="text-2xl md:text-3xl font-bold text-[#0a192f] mb-2">{member.name}</h3>
           <p className="text-[#00A651] font-bold text-lg">{member.role}</p>
@@ -158,7 +150,7 @@ const AboutUs = () => {
             className="relative"
           >
             <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-slate-200 h-[500px] w-full group">
-               <img src="https://images.unsplash.com/photo-1581093458791-9f302e6d8359?auto=format&fit=crop&q=80&w=800" alt="Lab Infrastructure" className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105" />
+               <img src="/lab-infra.png" alt="Lab Infrastructure" className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105" />
                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#0a192f] to-transparent p-8">
                  <p className="text-white font-medium">State-of-the-art Infrastructure in Pune, MH</p>
                </div>
@@ -202,9 +194,9 @@ const AboutUs = () => {
                <p className="text-slate-300 mb-8 text-lg">
                  We strictly follow guidelines regarding confidentiality. Your IP is our priority, secured by rigorous processes and agreements.
                </p>
-               <button className="bg-[#00A651] hover:bg-[#008f45] text-white px-8 py-3 rounded-lg font-semibold transition-colors flex items-center gap-2">
+               <Link to="/compounds" className="bg-[#00A651] hover:bg-[#008f45] text-white px-8 py-3 rounded-lg font-semibold transition-colors flex items-center gap-2 inline-flex w-fit">
                  View Capabilities <ArrowRight size={18} />
-               </button>
+               </Link>
              </div>
 
              <div className="grid gap-6">

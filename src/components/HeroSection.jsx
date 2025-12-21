@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import DNAHelix from './DNAHelix';
 import FloatingParticles from './FloatingParticles';
@@ -42,23 +43,25 @@ const HeroSection = () => {
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.6, duration: 0.8 }}
             >
-              <motion.a
-                href="#services"
-                className="flex-1 lg:flex-none px-2 py-3 lg:px-8 lg:py-4 rounded-full bg-secondary text-white font-semibold text-xs lg:text-base text-center hover:bg-secondary/90 transition-colors shadow-lg hover:shadow-xl flex items-center justify-center"
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Explore Our Services
-              </motion.a>
+              <Link to="/services" className="flex-1 lg:flex-none">
+                <motion.div
+                  className="w-full px-2 py-3 lg:px-8 lg:py-4 rounded-full bg-secondary text-white font-semibold text-xs lg:text-base text-center hover:bg-secondary/90 transition-colors shadow-lg hover:shadow-xl flex items-center justify-center"
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  Explore Our Services
+                </motion.div>
+              </Link>
               
-              <motion.a
-                href="#contact"
-                className="flex-1 lg:flex-none px-2 py-3 lg:px-8 lg:py-4 rounded-full border-2 border-primary text-primary font-semibold text-xs lg:text-base text-center hover:bg-primary/10 transition-colors flex items-center justify-center"
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Request a Consultation
-              </motion.a>
+              <Link to="/contact" className="flex-1 lg:flex-none">
+                <motion.div
+                  className="w-full px-2 py-3 lg:px-8 lg:py-4 rounded-full border-2 border-primary text-primary font-semibold text-xs lg:text-base text-center hover:bg-primary/10 transition-colors flex items-center justify-center"
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  Request a Consultation
+                </motion.div>
+              </Link>
             </motion.div>
           </motion.div>
           
