@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const FloatingParticles = () => {
   // Generate random particles
-  const particles = Array.from({ length: 15 }).map((_, i) => ({
+  const particles = Array.from({ length: 8 }).map((_, i) => ({
     id: i,
     x: Math.random() * 100, // Random horizontal position %
     y: Math.random() * 100, // Random vertical position %
