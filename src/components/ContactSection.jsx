@@ -179,11 +179,12 @@ const ContactSection = () => {
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="space-y-5">
+            <form action="https://formsubmit.co/chemsetuweb@gmail.com" method="POST" target="_blank" className="space-y-5">
               {/* Hidden fields for FormSubmit configuration */}
               <input type="hidden" name="_subject" value="New Contact Form Submission from ChemSetu Website" />
               <input type="hidden" name="_captcha" value="false" />
               <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_next" value="https://chemsetu.com" />
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div>
@@ -247,20 +248,10 @@ const ContactSection = () => {
 
               <button 
                 type="submit" 
-                disabled={isSubmitting}
-                className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-4 rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-blue-200 active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed"
+                className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-4 rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-blue-200 active:scale-[0.98]"
               >
-                {isSubmitting ? (
-                  <>
-                    <Loader2 className="w-5 h-5 animate-spin" />
-                    Sending...
-                  </>
-                ) : (
-                  <>
-                    <Send className="w-5 h-5" />
-                    Send Message
-                  </>
-                )}
+                <Send className="w-5 h-5" />
+                Send Message
               </button>
             </form>
           </div>
