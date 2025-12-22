@@ -1,9 +1,15 @@
 import React from 'react';
 import { MapPin, Phone, Mail, Send, ArrowRight } from 'lucide-react';
+import SEO from './SEO';
 
 const ContactSection = () => {
   return (
     <section className="relative py-12 md:py-20 px-4 min-h-screen flex items-center overflow-hidden bg-slate-50">
+      <SEO 
+        title="Contact Us" 
+        description="Get in touch with ChemSetu for inquiries about our chemical synthesis services, product availability, or partnership opportunities."
+        url="/contact"
+      />
       {/* Background Decorations */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <div className="absolute -top-[10%] -left-[10%] w-[50%] h-[50%] bg-blue-200/20 rounded-full blur-3xl"></div>

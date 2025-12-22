@@ -1,9 +1,15 @@
 import React from 'react';
 import { ShieldCheck, FileText, AlertTriangle } from 'lucide-react';
+import SEO from './SEO';
 
 const TermsPage = () => {
   return (
     <div className="bg-slate-50 min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+      <SEO 
+        title="Terms & Conditions" 
+        description="Read the Terms and Conditions for using ChemSetu's website and services."
+        url="/terms"
+      />
       <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-100">
         
         {/* Header */}

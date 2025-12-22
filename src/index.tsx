@@ -6,14 +6,18 @@ import reportWebVitals from './reportWebVitals';
 import { PrismicProvider } from '@prismicio/react';
 import { client } from './prismic';
 
+import { HelmetProvider } from 'react-helmet-async';
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <PrismicProvider client={client}>
-      <App />
-    </PrismicProvider>
+    <HelmetProvider>
+      <PrismicProvider client={client}>
+        <App />
+      </PrismicProvider>
+    </HelmetProvider>
   </React.StrictMode>
 );
 

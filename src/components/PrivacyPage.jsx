@@ -1,9 +1,15 @@
 import React from 'react';
 import { Lock, Eye, Server, UserCheck } from 'lucide-react';
+import SEO from './SEO';
 
 const PrivacyPage = () => {
   return (
     <div className="bg-slate-50 min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+      <SEO 
+        title="Privacy Policy" 
+        description="ChemSetu's Privacy Policy outlines how we collect, use, and protect your personal information."
+        url="/privacy"
+      />
       <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-100">
         
         {/* Header */}

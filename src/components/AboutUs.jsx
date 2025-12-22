@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Microscope, Globe, ChevronRight, ArrowRight, Quote } from 'lucide-react';
+import SEO from './SEO';
 
 // --- Updated Mock Data for Team with new fields ---
 const teamMembers = [
@@ -90,6 +91,11 @@ const TeamMemberProfile = ({ member }) => {
 const AboutUs = () => {
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-slate-800">
+      <SEO 
+        title="About Us" 
+        description="Learn about ChemSetu's mission, vision, and our expert team led by Mr. Sachin J. Mahangare. We bridge the gap between scientific innovation and industrial scale synthesis."
+        url="/about"
+      />
       
       {/* --- 1. Hero Section --- */}
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden bg-[#0a192f] text-white">

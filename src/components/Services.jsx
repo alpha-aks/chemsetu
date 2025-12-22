@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FlaskConical, Settings, Atom, Microscope, Factory, GraduationCap, Search, ArrowRight, Database } from 'lucide-react';
 import ServicesHeader from './ServicesHeader';
+import SEO from './SEO';
 
 const services = [
   {
@@ -65,6 +66,11 @@ const ServiceCard = ({ service, index }) => (
 const Services = () => {
   return (
     <div className="min-h-screen bg-white font-sans">
+      <SEO 
+        title="Our Services" 
+        description="Explore our comprehensive chemical services including API Intermediates, Process Development, Custom Synthesis, and Impurity Standards."
+        url="/services"
+      />
       {/* Header Section */}
       <ServicesHeader />
 

@@ -17,10 +17,15 @@ import Admin from './components/Admin';
 import TrustSection from './components/TrustSection';
 import Footer from './components/Footer';
 import BackgroundElements from './components/BackgroundElements';
+import SEO from './components/SEO';
 import './App.css';
 
 const HomePage = () => (
   <>
+    <SEO 
+      title="Home" 
+      description="ChemSetu - Bridging Science and Synthesis. Your trusted partner for high-purity API Impurities, advanced Intermediates, and complex Custom Synthesis solutions."
+    />
     <HeroSection />
     <BrandSection />
     <ServicesGrid />

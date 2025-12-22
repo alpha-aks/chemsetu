@@ -5,6 +5,7 @@ import { useAllPrismicDocumentsByType } from '@prismicio/react';
 import { PrismicRichText } from '@prismicio/react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Sphere, Torus, Environment, ContactShadows, Float } from '@react-three/drei';
+import SEO from './SEO';
 
 // --- 3D Atom Component (Reused) ---
 const Atom = () => {
@@ -80,6 +81,11 @@ const Compounds = () => {
 
   return (
     <section id="compounds" className="bg-slate-50 py-12 md:py-20 px-4 min-h-screen overflow-hidden">
+      <SEO 
+        title="Compounds Catalog" 
+        description="Browse our extensive catalog of high-quality chemical compounds, API impurities, and intermediates available for research and development."
+        url="/compounds"
+      />
       
       {/* Header Section with 3D Atom */}
       <div className="relative w-full h-auto md:h-[85vh] mb-12 md:mb-0 flex items-center overflow-hidden bg-slate-50">
