@@ -14,12 +14,36 @@ const CompoundDetails = () => {
   if (loading) return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
   if (!product) return <div className="min-h-screen flex items-center justify-center">Product not found</div>;
 
+  const productSchema = {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": product.name,
+    "description": `Detailed technical specifications for ${product.name}`,
+    "category": product.category,
+    "brand": {
+      "@type": "Brand",
+      "name": "ChemSetu"
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": `https://chemsetu.com/compounds/${id}`,
+      "priceCurrency": "USD",
+      "price": "0", 
+      "availability": "https://schema.org/InStock",
+      "seller": {
+        "@type": "Organization",
+        "name": "ChemSetu"
+      }
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white pt-24 pb-20">
       <SEO 
         title={product.name} 
         description={`Detailed technical specifications and information for ${product.name}. Available for research and development from ChemSetu.`}
         url={`/compounds/${id}`}
+        schema={productSchema}
       />
       <div className="max-w-7xl mx-auto px-4">
         <Link to="/compounds" className="inline-flex items-center text-slate-500 hover:text-blue-600 mb-8 transition-colors">

@@ -7,7 +7,8 @@ const SEO = ({
   keywords, 
   url, 
   image,
-  type = 'website'
+  type = 'website',
+  schema
 }) => {
   const siteTitle = 'ChemSetu';
   const defaultDescription = 'Your trusted partner for high-purity API Impurities, advanced Intermediates, and complex Custom Synthesis solutions.';
@@ -20,6 +21,29 @@ const SEO = ({
   const metaKeywords = keywords || defaultKeywords;
   const metaUrl = url ? `${siteUrl}${url}` : siteUrl;
   const metaImage = image ? (image.startsWith('http') ? image : `${siteUrl}${image}`) : defaultImage;
+
+  // Default Organization Schema
+  const defaultSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "ChemSetu",
+    "url": siteUrl,
+    "logo": defaultImage,
+    "description": defaultDescription,
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Pune",
+      "addressRegion": "Maharashtra",
+      "addressCountry": "IN"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "email": "info@chemsetu.com"
+    }
+  };
+
+  const jsonLd = schema || defaultSchema;
 
   return (
     <Helmet>
@@ -42,6 +66,11 @@ const SEO = ({
       <meta name="twitter:title" content={metaTitle} />
       <meta name="twitter:description" content={metaDescription} />
       <meta name="twitter:image" content={metaImage} />
+
+      {/* Structured Data */}
+      <script type="application/ld+json">
+        {JSON.stringify(jsonLd)}
+      </script>
     </Helmet>
   );
 };

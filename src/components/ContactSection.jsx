@@ -3,12 +3,46 @@ import { MapPin, Phone, Mail, Send, ArrowRight } from 'lucide-react';
 import SEO from './SEO';
 
 const ContactSection = () => {
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "ChemicalIndustry",
+    "name": "ChemSetu",
+    "image": "https://chemsetu.com/chemsetu-logo.png",
+    "url": "https://chemsetu.com",
+    "telephone": "+919822404444",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Office No. 101, 1st Floor, ChemSetu House",
+      "addressLocality": "Pune",
+      "postalCode": "411001",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "18.5204",
+      "longitude": "73.8567"
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "opens": "09:00",
+      "closes": "18:00"
+    }
+  };
+
   return (
     <section className="relative py-12 md:py-20 px-4 min-h-screen flex items-center overflow-hidden bg-slate-50">
       <SEO 
         title="Contact Us" 
         description="Get in touch with ChemSetu for inquiries about our chemical synthesis services, product availability, or partnership opportunities."
         url="/contact"
+        schema={localBusinessSchema}
       />
       {/* Background Decorations */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
