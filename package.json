@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "homepage": "https://chemsetu.com",
   "private": true,
+  "engines": {
+    "node": ">=20 <21",
+    "npm": ">=10 <11"
+  },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "@prismicio/client": "^7.21.0",
@@ -31,9 +35,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "NODE_OPTIONS=--no-deprecation react-scripts start",
+    "build": "NODE_OPTIONS=--no-deprecation GENERATE_SOURCEMAP=false react-scripts build",
+    "test": "NODE_OPTIONS=--no-deprecation react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

@@ -12,11 +12,11 @@ const ContactSection = () => {
     setSubmitStatus(null);
 
     const formData = new FormData(e.target);
-    
+
     try {
-      const response = await fetch("https://formsubmit.co/ajax/hello@chemsetu.com", {
-        method: "POST",
-        body: formData
+      const response = await fetch('https://formsubmit.co/ajax/chemsetuweb@gmail.com', {
+        method: 'POST',
+        body: formData,
       });
 
       if (response.ok) {
@@ -179,7 +179,7 @@ const ContactSection = () => {
               </div>
             )}
 
-            <form action="https://formsubmit.co/chemsetuweb@gmail.com" method="POST" target="_blank" className="space-y-5">
+            <form onSubmit={handleSubmit} className="space-y-5">
               {/* Hidden fields for FormSubmit configuration */}
               <input type="hidden" name="_subject" value="New Contact Form Submission from ChemSetu Website" />
               <input type="hidden" name="_captcha" value="false" />
@@ -248,10 +248,20 @@ const ContactSection = () => {
 
               <button 
                 type="submit" 
-                className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-4 rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-blue-200 active:scale-[0.98]"
+                disabled={isSubmitting}
+                className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-4 rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-blue-200 active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed"
               >
-                <Send className="w-5 h-5" />
-                Send Message
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-5 h-5" />
+                    Send Message
+                  </>
+                )}
               </button>
             </form>
           </div>
