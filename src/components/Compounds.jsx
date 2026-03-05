@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Search, FlaskConical, ArrowRight } from 'lucide-react';
 import { useAllPrismicDocumentsByType } from '@prismicio/react';
@@ -78,6 +78,28 @@ const ElectronRing = ({ rotation, color, speed }) => {
 const Compounds = () => {
   const [documents, { state }] = useAllPrismicDocumentsByType('compound');
   const loading = state === 'loading';
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const filteredDocuments = useMemo(() => {
+    if (!documents) return [];
+
+    const query = searchQuery.trim().toLowerCase();
+    if (!query) return documents;
+
+    const normalize = (value) => (typeof value === 'string' ? value.trim().toLowerCase() : '');
+
+    return documents.filter((doc) => {
+      const name = normalize(doc?.data?.name);
+      const casId = normalize(doc?.data?.cas_id);
+      const productCode = normalize(doc?.data?.product_code);
+
+      return (
+        (casId && casId.includes(query)) ||
+        (productCode && productCode.includes(query)) ||
+        (name && name.includes(query))
+      );
+    });
+  }, [documents, searchQuery]);
 
   return (
     <section id="compounds" className="bg-slate-50 py-12 md:py-20 px-4 min-h-screen overflow-hidden">
@@ -130,6 +152,8 @@ const Compounds = () => {
                         <input 
                             type="text" 
                             placeholder="Search by CAS No., Name..." 
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
                             className="w-full pl-12 pr-4 py-3 md:py-4 rounded-full border border-slate-200 shadow-lg focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white/90 backdrop-blur-sm text-sm md:text-base"
                         />
                         <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400 w-5 h-5" />
@@ -146,8 +170,15 @@ const Compounds = () => {
       {loading ? (
         <div className="text-center py-20">Loading library...</div>
       ) : (
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {documents && documents.map((doc) => (
+        <div className="max-w-7xl mx-auto">
+          {filteredDocuments.length === 0 ? (
+            <div className="text-center py-20 text-slate-600">
+              No compounds found for "{searchQuery.trim()}".
+            </div>
+          ) : null}
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          {filteredDocuments.map((doc) => (
             <Link to={`/compounds/${doc.uid}`} key={doc.id} className="block">
               <div className="bg-white rounded-xl md:rounded-2xl p-6 md:p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 group cursor-pointer hover:-translate-y-1 flex flex-col h-full">
                 
@@ -192,6 +223,7 @@ const Compounds = () => {
               </div>
             </Link>
           ))}
+          </div>
         </div>
       )}
 

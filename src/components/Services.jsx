@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FlaskConical, Settings, Atom, Microscope, Factory, GraduationCap, Search, ArrowRight, Database } from 'lucide-react';
+import { FlaskConical, Settings, Atom, Microscope, Factory, GraduationCap, Search, Database } from 'lucide-react';
 import ServicesHeader from './ServicesHeader';
 import SEO from './SEO';
 
@@ -9,37 +9,61 @@ const services = [
     title: "API Intermediates",
     description: "High-purity intermediates for pharmaceutical synthesis, ensuring seamless integration into your production line.",
     icon: <Database className="w-10 h-10 text-blue-600" />,
-    color: "blue"
+    color: "blue",
+    image: {
+      src: "/venlafaxine.png",
+      alt: "API intermediates and pharmaceutical synthesis",
+    },
   },
   {
     title: "Process Development",
     description: "Optimization of synthetic routes for scalability, safety, and cost-efficiency from lab to pilot scale.",
     icon: <Settings className="w-10 h-10 text-green-600" />,
-    color: "green"
+    color: "green",
+    image: {
+      src: "/lab-infra.png",
+      alt: "Process development and lab optimization",
+    },
   },
   {
     title: "Custom Synthesis",
     description: "Tailored synthesis of complex molecules, impurities, and metabolites from milligrams to kilograms.",
     icon: <FlaskConical className="w-10 h-10 text-blue-600" />,
-    color: "blue"
+    color: "blue",
+    image: {
+      src: "/lab-infra.png",
+      alt: "Custom synthesis in a chemistry lab",
+    },
   },
   {
     title: "Analytical Solutions",
     description: "Comprehensive characterization using HPLC, GC, NMR, and LC-MS to ensure the highest quality standards.",
     icon: <Microscope className="w-10 h-10 text-green-600" />,
-    color: "green"
+    color: "green",
+    image: {
+      src: "/lab-infra.png",
+      alt: "Analytical solutions and instrumentation",
+    },
   },
   {
     title: "Impurity Synthesis",
     description: "Identification, isolation, and synthesis of API impurities to support regulatory filings and quality control.",
     icon: <Atom className="w-10 h-10 text-blue-600" />,
-    color: "blue"
+    color: "blue",
+    image: {
+      src: "/venlafaxine.png",
+      alt: "Impurity synthesis and reference standards",
+    },
   },
   {
     title: "Industrial Training",
     description: "Bridging the academic-industry gap with hands-on training in advanced organic synthesis and analysis.",
     icon: <GraduationCap className="w-10 h-10 text-green-600" />,
-    color: "green"
+    color: "green",
+    image: {
+      src: "/lab-infra.png",
+      alt: "Industrial training in organic synthesis",
+    },
   }
 ];
 
@@ -51,6 +75,22 @@ const ServiceCard = ({ service, index }) => (
     transition={{ delay: index * 0.1 }}
     className="group relative bg-white p-8 rounded-2xl border border-slate-100 hover:border-[#00A651] transition-all duration-300 hover:shadow-xl hover:-translate-y-2"
   >
+    <div className="mb-6">
+      <div className="rounded-2xl bg-gradient-to-r from-blue-600 to-[#00A651] p-[2px]">
+        <div className="rounded-2xl bg-white overflow-hidden">
+          <div className="relative aspect-[16/10]">
+            <img
+              src={service.image?.src}
+              alt={service.image?.alt || service.title}
+              className="absolute inset-0 w-full h-full object-cover"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/25 via-transparent to-transparent" />
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div className={`mb-6 p-4 rounded-xl inline-block ${service.color === 'blue' ? 'bg-blue-50' : 'bg-green-50'} group-hover:scale-110 transition-transform duration-300`}>
       {service.icon}
     </div>

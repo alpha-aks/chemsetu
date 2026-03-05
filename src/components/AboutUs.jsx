@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Microscope, Globe, ChevronRight, ArrowRight, Quote } from 'lucide-react';
+import { Microscope, ChevronRight, ArrowRight, Quote } from 'lucide-react';
 import SEO from './SEO';
 
 // --- Updated Mock Data for Team with new fields ---
@@ -9,6 +9,8 @@ const teamMembers = [
   {
     name: "Mr. Sachin J. Mahangare",
     role: "Director & Founder",
+    imageUrl: "https://images.prismic.io/chemsetu/aanRyFxvIZEnjYZW_sachindirectorfounder.JPG?auto=format,compress",
+    imageAlt: "Mr. Sachin J. Mahangare - Director & Founder",
     education: "M.Sc. (Organic Chemistry) from Fergusson College, Pune University (2003)",
     experience: "19+ Years in Research & Industry",
     companies: "Lupin, Nycomed, Teva, Emcure, Deepak Nitrite",
@@ -18,6 +20,8 @@ const teamMembers = [
   {
     name: "Mrs. Rupali Mahangare",
     role: "Director",
+    imageUrl: "https://images.prismic.io/chemsetu/aanRuVxvIZEnjYZV_Rupalidirector.JPG?auto=format,compress",
+    imageAlt: "Mrs. Rupali Mahangare - Director",
     education: "M.Sc. (Organic Chemistry) from Pune University",
     experience: "10+ Years in Research & Industry",
     companies: "Glenmark Pharmaceuticals, Getz Pharma, Emcure Pharma Ltd",
@@ -47,40 +51,59 @@ const TeamMemberProfile = ({ member }) => {
   return (
     <motion.div 
       variants={fadeInUp}
-      className="flex flex-col items-start gap-8 bg-white p-8 md:p-10 rounded-3xl shadow-sm border border-slate-100"
+      className="bg-white p-6 md:p-10 rounded-3xl shadow-sm border border-slate-100"
     >
-      {/* Content Section */}
-      <div className="w-full flex flex-col">
-        <div className="mb-6">
-          <h3 className="text-2xl md:text-3xl font-bold text-[#0a192f] mb-2">{member.name}</h3>
-          <p className="text-[#00A651] font-bold text-lg">{member.role}</p>
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        {/* Image */}
+        <div className="lg:col-span-4">
+          <div className="relative rounded-3xl overflow-hidden bg-slate-50 border border-slate-200 shadow-sm">
+            <div className="aspect-[4/5] w-full">
+              <img
+                src={member.imageUrl}
+                alt={member.imageAlt || member.name}
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+
+            {/* Subtle frame */}
+            <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-slate-200" />
+          </div>
         </div>
 
-        <div className="space-y-5">
-            <div>
-                <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Education</h4>
-                <p className="text-slate-800 font-medium text-lg">{member.education}</p>
-            </div>
-            
-            <div>
-                <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Experience</h4>
-                <p className="text-slate-800 font-medium text-lg">{member.experience}</p>
-                <p className="text-slate-500 text-sm mt-1">Previously at: {member.companies}</p>
-            </div>
+        {/* Content */}
+        <div className="lg:col-span-8 w-full flex flex-col">
+          <div className="mb-6">
+            <h3 className="text-2xl md:text-3xl font-bold text-[#0a192f] mb-2">{member.name}</h3>
+            <p className="text-[#00A651] font-bold text-lg">{member.role}</p>
+          </div>
 
-            <div>
-                <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Core Expertise</h4>
-                <p className="text-slate-800 font-medium text-lg">{member.expertise}</p>
-            </div>
-             
-             {member.achievements && (
-                <div className="pt-5 border-t border-slate-100 mt-2">
-                    <div className="flex gap-3">
-                        <Quote className="text-[#00A651] w-6 h-6 flex-shrink-0 rotate-180" />
-                        <p className="text-slate-600 italic font-medium">{member.achievements}</p>
-                    </div>
-                </div>
-             )}
+          <div className="space-y-5">
+              <div>
+                  <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Education</h4>
+                  <p className="text-slate-800 font-medium text-lg">{member.education}</p>
+              </div>
+              
+              <div>
+                  <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Experience</h4>
+                  <p className="text-slate-800 font-medium text-lg">{member.experience}</p>
+                  <p className="text-slate-500 text-sm mt-1">Previously at: {member.companies}</p>
+              </div>
+
+              <div>
+                  <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Core Expertise</h4>
+                  <p className="text-slate-800 font-medium text-lg">{member.expertise}</p>
+              </div>
+               
+               {member.achievements && (
+                  <div className="pt-5 border-t border-slate-100 mt-2">
+                      <div className="flex gap-3">
+                          <Quote className="text-[#00A651] w-6 h-6 flex-shrink-0 rotate-180" />
+                          <p className="text-slate-600 italic font-medium">{member.achievements}</p>
+                      </div>
+                  </div>
+               )}
+          </div>
         </div>
       </div>
     </motion.div>

@@ -1,72 +1,152 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Linkedin,
+  Instagram,
+} from 'lucide-react';
 
 
 const Footer = () => {
   return (
-    <footer className="bg-[#1a1c50] text-white py-16 w-full">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 items-center">
-          {/* Company Info with Logo */}
-          <div className="flex flex-col items-start">
-            <div className="mb-6 flex items-center justify-center w-20 h-20 rounded-full bg-white shadow-lg border-4 border-[#e0e7ef]">
-              <img src="/chemsetu-logo.png" alt="ChemSetu Logo" className="h-12 w-auto" />
+    <footer className="relative bg-slate-900 text-slate-200">
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.12]"
+        style={{
+          backgroundImage:
+            'linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px)',
+          backgroundSize: '44px 44px',
+          backgroundPosition: 'center',
+        }}
+        aria-hidden="true"
+      />
+
+      <div className="relative container mx-auto px-4 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-start text-left">
+          {/* Col 1: Brand */}
+          <div className="space-y-5">
+            <div className="flex items-center gap-3">
+              <div className="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center ring-1 ring-white/30">
+                <img src="/chemsetu-logo.png" alt="ChemSetu Logo" className="h-9 w-auto" />
+              </div>
+              <div>
+                <p className="text-white font-semibold text-lg">ChemSetu</p>
+                <p className="text-slate-400 text-sm">Bridging Science and Synthesis</p>
+              </div>
             </div>
-            <p className="text-gray-300 leading-relaxed mb-6">
+
+            <p className="text-slate-300 leading-relaxed text-left">
               Bridging the gap between academic research and industrial application with precision and confidentiality.
             </p>
-            <div className="flex space-x-4">
-              <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#00A651] transition-colors">
-                {/* LinkedIn Icon */}
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+
+            <div className="flex items-center gap-3">
+              <a
+                href="https://www.linkedin.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-white/5 ring-1 ring-white/10 flex items-center justify-center hover:bg-white/10 transition-colors"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="w-5 h-5 text-blue-400" />
+              </a>
+              <a
+                href="https://www.instagram.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-white/5 ring-1 ring-white/10 flex items-center justify-center hover:bg-white/10 transition-colors"
+                aria-label="Instagram"
+              >
+                <Instagram className="w-5 h-5 text-blue-400" />
               </a>
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h4 className="text-lg font-semibold mb-6">Quick Links</h4>
-            <ul className="space-y-4">
-              <li><Link to="/compounds" className="text-gray-300 hover:text-[#00A651] transition-colors">Research Papers</Link></li>
-              <li><Link to="/terms" className="text-gray-300 hover:text-[#00A651] transition-colors">Terms & Conditions</Link></li>
-              <li><Link to="/privacy" className="text-gray-300 hover:text-[#00A651] transition-colors">Privacy Policy</Link></li>
-            </ul>
+          {/* Col 2: Links */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 justify-items-start">
+            <div>
+              <h4 className="text-green-400 font-semibold mb-4">Company</h4>
+              <ul className="space-y-3">
+                <li>
+                  <Link to="/about" className="text-slate-300 hover:text-white transition-colors">
+                    About
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/services" className="text-slate-300 hover:text-white transition-colors">
+                    Services
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/contact" className="text-slate-300 hover:text-white transition-colors">
+                    Contact
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="text-green-400 font-semibold mb-4">Legal</h4>
+              <ul className="space-y-3">
+                <li>
+                  <Link to="/terms" className="text-slate-300 hover:text-white transition-colors">
+                    Terms & Conditions
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/privacy" className="text-slate-300 hover:text-white transition-colors">
+                    Privacy Policy
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </div>
 
-          {/* Contact Info */}
-          <div className="lg:col-span-2">
-            <h4 className="text-lg font-semibold mb-6">Contact Us</h4>
-            <div className="space-y-4">
-              <div className="flex items-center space-x-2 whitespace-nowrap overflow-x-auto">
-                <span className="text-[#00A651]">📍</span>
-                <a 
-                  href="https://www.google.com/maps/search/?api=1&query=S.+No.+80%2F8+Akshay+Industries%2C+Mahadev+Nagar%2C+Nanded+Phata%2C+Pune+-+411041" 
-                  target="_blank" 
+          {/* Col 3: Contact */}
+          <div className="text-left">
+            <h4 className="text-green-400 font-semibold mb-4">Contact</h4>
+            <ul className="space-y-4 text-slate-300">
+              <li>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=S.+No.+80%2F8+Akshay+Industries%2C+Mahadev+Nagar%2C+Nanded+Phata%2C+Pune+-+411041"
+                  target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-300 hover:text-[#00A651] transition-colors"
-                  style={{whiteSpace: 'nowrap'}}
+                  className="grid grid-cols-[20px_1fr] gap-3 items-start hover:text-white transition-colors"
                 >
-                  S. No. 80/8 Akshay Industries, Mahadev Nagar, Nanded Phata, Pune.
+                  <MapPin className="w-5 h-5 text-blue-400" />
+                  <span className="leading-relaxed">
+                    S. No. 80/8 Akshay Industries, Mahadev Nagar, Nanded Phata, Pune - 411041.
+                  </span>
                 </a>
-              </div>
-              <div className="flex items-center space-x-4">
-                <span className="text-[#00A651]">📞</span>
-                <a href="tel:+918805245811" className="text-gray-300 hover:text-[#00A651] transition-colors">
-                  +91 8805245811
+              </li>
+
+              <li>
+                <a
+                  href="tel:+918805245811"
+                  className="grid grid-cols-[20px_1fr] gap-3 items-start hover:text-white transition-colors"
+                >
+                  <Phone className="w-5 h-5 text-blue-400" />
+                  <span>+91 8805245811</span>
                 </a>
-              </div>
-              <div className="flex items-center space-x-4">
-                <span className="text-[#00A651]">✉️</span>
-                <a href="mailto:info.chemsetu@gmail.com" className="text-gray-300 hover:text-[#00A651] transition-colors">
-                  info.chemsetu@gmail.com
+              </li>
+
+              <li>
+                <a
+                  href="mailto:info.chemsetu@gmail.com"
+                  className="grid grid-cols-[20px_1fr] gap-3 items-start hover:text-white transition-colors"
+                >
+                  <Mail className="w-5 h-5 text-blue-400" />
+                  <span>info.chemsetu@gmail.com</span>
                 </a>
-              </div>
-            </div>
+              </li>
+            </ul>
           </div>
         </div>
 
-        <div className="border-t border-white/10 mt-12 pt-8 text-center text-gray-400 text-sm">
-          <p>&copy; {new Date().getFullYear()} ChemSetu. All rights reserved.</p>
+        <div className="mt-12 pt-8 border-t border-white/10 text-sm text-slate-400 flex flex-col sm:flex-row gap-2 sm:gap-4 items-start sm:items-center sm:justify-between text-left">
+          <p className="w-full sm:w-auto">&copy; {new Date().getFullYear()} ChemSetu. All rights reserved.</p>
+          <p className="text-slate-500 w-full sm:w-auto">Precision • Confidentiality • Scale</p>
         </div>
       </div>
     </footer>

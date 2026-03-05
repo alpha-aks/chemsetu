@@ -1,10 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Moon, Sun } from 'lucide-react';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    const stored = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const shouldBeDark = stored ? stored === 'dark' : prefersDark;
+
+    document.documentElement.classList.toggle('dark', shouldBeDark);
+    setIsDark(shouldBeDark);
+  }, []);
+
+  const toggleTheme = () => {
+    const next = !isDark;
+    document.documentElement.classList.toggle('dark', next);
+    localStorage.setItem('theme', next ? 'dark' : 'light');
+    setIsDark(next);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,7 +38,7 @@ const Navbar = () => {
 
   return (
     <motion.nav 
-      className="fixed w-full z-50 bg-white shadow-md py-1 md:py-2 transition-all duration-300"
+      className="fixed w-full z-50 bg-white dark:bg-slate-950 shadow-md py-1 md:py-2 transition-all duration-300"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
@@ -52,7 +70,7 @@ const Navbar = () => {
                 <Link
                   key={item}
                   to={path}
-                  className="text-gray-700 hover:text-primary transition-colors duration-300 text-sm font-bold"
+                  className="text-gray-700 dark:text-slate-200 hover:text-primary transition-colors duration-300 text-sm font-bold"
                 >
                   {item}
                 </Link>
@@ -60,13 +78,26 @@ const Navbar = () => {
                 <motion.a
                   key={item}
                   href={`/#${item.toLowerCase().replace(' ', '-')}`}
-                  className="text-gray-700 hover:text-primary transition-colors duration-300 text-sm font-bold"
+                  className="text-gray-700 dark:text-slate-200 hover:text-primary transition-colors duration-300 text-sm font-bold"
                   whileHover={{ y: -2 }}
                 >
                   {item}
                 </motion.a>
               );
             })}
+
+            {/* Dark mode toggle */}
+            <motion.button
+              type="button"
+              aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+              onClick={toggleTheme}
+              className="ml-2 p-2 rounded-full border border-slate-200 dark:border-slate-700 bg-white/80 dark:bg-slate-900/70 text-slate-700 dark:text-slate-200 hover:text-primary transition-colors"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              {isDark ? <Sun size={18} /> : <Moon size={18} />}
+            </motion.button>
+
             <motion.button 
               className="ml-4 px-6 py-2 rounded-full bg-secondary text-white font-medium text-sm hover:bg-secondary/90 transition-colors shadow-md"
               whileHover={{ scale: 1.05 }}
@@ -131,7 +162,7 @@ const Navbar = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="fixed inset-0 bg-white/95 backdrop-blur-xl z-40 flex flex-col items-center justify-center md:hidden"
+            className="fixed inset-0 bg-white/95 dark:bg-slate-950/95 backdrop-blur-xl z-40 flex flex-col items-center justify-center md:hidden"
             initial={{ opacity: 0, x: '100%' }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
@@ -169,6 +200,20 @@ const Navbar = () => {
                   </motion.a>
                 );
               })}
+
+              {/* Dark mode toggle (mobile) */}
+              <motion.button
+                type="button"
+                aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+                onClick={toggleTheme}
+                className="p-3 rounded-full border border-slate-200 dark:border-slate-700 bg-white/80 dark:bg-slate-900/70 text-slate-700 dark:text-slate-200"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.45 }}
+              >
+                {isDark ? <Sun size={20} /> : <Moon size={20} />}
+              </motion.button>
+
               <motion.button 
                 className="px-8 py-3 rounded-full bg-secondary text-white font-bold text-lg shadow-lg"
                 initial={{ opacity: 0, y: 20 }}

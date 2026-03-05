@@ -11,6 +11,10 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+  .dark body {
+    @apply bg-slate-950 text-slate-100;
+  }
+
   h1, h2, h3, h4, h5, h6 {
     @apply font-bold;
   }
@@ -25,10 +29,47 @@
   @apply bg-gray-100;
 }
 
+.dark ::-webkit-scrollbar-track {
+  @apply bg-slate-900;
+}
+
 ::-webkit-scrollbar-thumb {
   @apply bg-gray-400 rounded-full;
 }
 
+.dark ::-webkit-scrollbar-thumb {
+  @apply bg-slate-600;
+}
+
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-gray-500;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  @apply bg-slate-500;
+}
+
+@layer utilities {
+  /* Backgrounds */
+  .dark .bg-white { @apply bg-slate-950; }
+  .dark .bg-slate-50 { @apply bg-slate-950; }
+  .dark .bg-slate-100 { @apply bg-slate-900; }
+  .dark .bg-gray-100 { @apply bg-slate-900; }
+
+  /* Text */
+  .dark .text-gray-900 { @apply text-slate-100; }
+  .dark .text-gray-800 { @apply text-slate-100; }
+  .dark .text-gray-700 { @apply text-slate-200; }
+  .dark .text-slate-900 { @apply text-slate-100; }
+  .dark .text-slate-800 { @apply text-slate-100; }
+  .dark .text-slate-700 { @apply text-slate-200; }
+  .dark .text-slate-600 { @apply text-slate-300; }
+  .dark .text-slate-500 { @apply text-slate-400; }
+
+  /* Borders */
+  .dark .border-slate-50 { @apply border-slate-900; }
+  .dark .border-slate-100 { @apply border-slate-800; }
+  .dark .border-slate-200 { @apply border-slate-800; }
+  .dark .border-gray-100 { @apply border-slate-800; }
+  .dark .border-gray-200 { @apply border-slate-700; }
 }

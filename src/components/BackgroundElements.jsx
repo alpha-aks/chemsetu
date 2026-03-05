@@ -27,11 +27,11 @@ const FloatingIcon = ({ Icon, size, initialX, initialY, duration, delay, color }
 
 const BackgroundElements = () => {
   return (
-    <div className="fixed inset-0 z-[-1] overflow-hidden pointer-events-none bg-slate-50">
+    <div className="fixed inset-0 z-[-1] overflow-hidden pointer-events-none bg-slate-50 dark:bg-slate-950">
       {/* Gradient Orbs for "Liquid" feel */}
-      <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-200/30 rounded-full blur-[100px]" />
-      <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-purple-200/30 rounded-full blur-[100px]" />
-      <div className="absolute top-[40%] left-[40%] w-[30%] h-[30%] bg-cyan-100/30 rounded-full blur-[80px]" />
+      <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-200/30 dark:bg-blue-500/10 rounded-full blur-[100px]" />
+      <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-purple-200/30 dark:bg-purple-500/10 rounded-full blur-[100px]" />
+      <div className="absolute top-[40%] left-[40%] w-[30%] h-[30%] bg-cyan-100/30 dark:bg-cyan-400/10 rounded-full blur-[80px]" />
 
       {/* Floating Chemical Elements */}
       <FloatingIcon 

@@ -1,10 +1,12 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 import Navbar from './components/Navbar';
 import ScrollToTop from './components/ScrollToTop';
 import HeroSection from './components/HeroSection';
 import BrandSection from './components/BrandSection';
 import ServicesGrid from './components/ServicesGrid';
+import WhyChooseUs from './components/WhyChooseUs';
 import InfrastructureTimeline from './components/InfrastructureTimeline';
 import Compounds from './components/Compounds';
 import CompoundDetails from './components/CompoundDetails';
@@ -17,6 +19,7 @@ import Admin from './components/Admin';
 import TrustSection from './components/TrustSection';
 import Footer from './components/Footer';
 import BackgroundElements from './components/BackgroundElements';
+import Preloader from './components/Preloader';
 import SEO from './components/SEO';
 import './App.css';
 
@@ -29,16 +32,62 @@ const HomePage = () => (
     <HeroSection />
     <BrandSection />
     <ServicesGrid />
+    <WhyChooseUs />
     <InfrastructureTimeline />
     <TrustSection />
   </>
 );
 
-function App() {
+function AppShell() {
+  const location = useLocation();
+  const [initialLoading, setInitialLoading] = useState(true);
+  const [routeLoading, setRouteLoading] = useState(false);
+  const [routePreloaderKey, setRoutePreloaderKey] = useState(0);
+  const isFirstRoute = useRef(true);
+
+  useEffect(() => {
+    const start = typeof performance !== 'undefined' ? performance.now() : Date.now();
+    const minVisibleMs = 700;
+
+    const finish = () => {
+      const end = typeof performance !== 'undefined' ? performance.now() : Date.now();
+      const elapsed = end - start;
+      const delay = Math.max(0, minVisibleMs - elapsed);
+      window.setTimeout(() => setInitialLoading(false), delay);
+    };
+
+    if (document.readyState === 'complete') {
+      finish();
+      return;
+    }
+
+    window.addEventListener('load', finish, { once: true });
+    return () => window.removeEventListener('load', finish);
+  }, []);
+
+  useEffect(() => {
+    if (isFirstRoute.current) {
+      isFirstRoute.current = false;
+      return;
+    }
+
+    setRoutePreloaderKey((k) => k + 1);
+    setRouteLoading(true);
+    const t = window.setTimeout(() => setRouteLoading(false), 650);
+    return () => window.clearTimeout(t);
+  }, [location.pathname]);
+
+  const showPreloader = initialLoading || routeLoading;
+
   return (
-    <Router>
+    <>
       <ScrollToTop />
       <BackgroundElements />
+      <AnimatePresence mode="wait">
+        {showPreloader ? (
+          <Preloader key={initialLoading ? 'initial' : `route-${routePreloaderKey}`} />
+        ) : null}
+      </AnimatePresence>
       <div className="App relative">
         <Navbar />
         <main>
@@ -56,6 +105,14 @@ function App() {
         </main>
         <Footer />
       </div>
+    </>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <AppShell />
     </Router>
   );
 }
