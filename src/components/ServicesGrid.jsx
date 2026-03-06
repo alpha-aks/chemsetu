@@ -74,42 +74,66 @@ const services = [
   {
     title: "API Impurities & Intermediates",
     description: "Focus on difficult-to-synthesize molecules and complex impurity standards.",
-    Icon: Icons.Flask
+    Icon: Icons.Flask,
+    image: {
+      src: 'https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&q=80&w=800',
+      alt: 'API impurities and intermediates',
+    }
   },
   {
     title: "Custom Synthesis",
     description: "From mg to 5kg scale. Specializing in NCEs and novel scaffolds.",
-    Icon: Icons.Molecule
+    Icon: Icons.Molecule,
+    image: {
+      src: 'https://images.prismic.io/chemsetu/aaseHlxvIZEnjbeF_Screenshot2026-03-07at12.03.02AM.png?auto=format,compress',
+      alt: 'Custom synthesis chemistry lab',
+    }
   },
   {
     title: "Process Development",
     description: "Cost reduction strategies & seamless Technology Transfer to manufacturing.",
-    Icon: Icons.Gears
+    Icon: Icons.Gears,
+    image: {
+      src: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800',
+      alt: 'Process development and lab optimization',
+    }
   },
   {
     title: "Analytical Solutions",
     description: "Isolation & Structural Elucidation of unknown impurities and degradation products.",
-    Icon: Icons.Microscope
+    Icon: Icons.Microscope,
+    image: {
+      src: 'https://images.prismic.io/chemsetu/aase51xvIZEnjbeV_Screenshot2026-03-07at12.06.09AM.png?auto=format,compress',
+      alt: 'Analytical solutions and instrumentation',
+    }
   },
   {
     title: "Complex Reactions",
     description: "Expertise in Cryogenic, High Pressure, and Chiral reaction chemistries.",
-    Icon: Icons.Atom
+    Icon: Icons.Atom,
+    image: {
+      src: 'https://images.prismic.io/chemsetu/aasfblxvIZEnjbec_Screenshot2026-03-07at12.09.05AM.png?auto=format,compress',
+      alt: 'Complex chemical reactions and lab equipment',
+    }
   },
   {
     title: "Industrial Training",
     description: "Bridging academic knowledge with practical industrial application.",
-    Icon: Icons.GraduationCap
+    Icon: Icons.GraduationCap,
+    image: {
+      src: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=800',
+      alt: 'Industrial training and collaboration',
+    }
   }
 ];
 
 const ServicesGrid = () => {
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 bg-slate-50 dark:bg-slate-950">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-[#2E3192] mb-4">Core Capabilities</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <h2 className="text-4xl font-bold text-primary mb-4">Core Capabilities</h2>
+          <p className="text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
             Delivering specialized chemical solutions with precision and expertise.
           </p>
         </div>
@@ -118,20 +142,36 @@ const ServicesGrid = () => {
           {services.map((service, index) => (
             <motion.div
               key={index}
-              className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 cursor-pointer group hover:shadow-[0_0_20px_rgba(0,166,81,0.3)] transition-shadow duration-300 flex flex-col items-center text-center"
-              whileHover={{ y: -8 }}
+              className="group relative flex flex-col overflow-hidden rounded-2xl bg-white dark:bg-slate-950 border border-slate-100 dark:border-slate-800 shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <div className="mb-6 bg-blue-50 w-20 h-20 rounded-full flex items-center justify-center text-[#2E3192] group-hover:bg-[#00A651] group-hover:text-white transition-all duration-300">
-                <service.Icon />
+              {/* Image Header */}
+              <div className="relative h-44 w-full overflow-hidden">
+                <img
+                  src={service.image?.src}
+                  alt={service.image?.alt || service.title}
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-black/20 transition-opacity group-hover:bg-black/10" />
               </div>
-              <h3 className="text-xl font-bold text-[#2E3192] mb-3 group-hover:text-[#00A651] transition-colors">
-                {service.title}
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                {service.description}
-              </p>
-              <div className="mt-6 w-12 h-1 bg-[#00A651] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+              {/* Floating Icon Circle */}
+              <div className="relative flex justify-center">
+                <div className="absolute -top-10 flex h-20 w-20 items-center justify-center rounded-full border-[6px] border-white dark:border-slate-950 bg-white dark:bg-slate-950 shadow-lg text-primary transition-transform duration-300 group-hover:scale-110">
+                  <service.Icon />
+                </div>
+              </div>
+
+              {/* Text Body */}
+              <div className="flex flex-1 flex-col items-center p-8 pt-12 text-center">
+                <h3 className="mb-3 text-xl font-bold text-slate-800 dark:text-slate-100 transition-colors group-hover:text-secondary">
+                  {service.title}
+                </h3>
+                <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+                  {service.description}
+                </p>
+              </div>
             </motion.div>
           ))}
         </div>

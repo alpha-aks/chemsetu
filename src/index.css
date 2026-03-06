@@ -5,10 +5,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 @layer base {
+  html {
+    @apply overflow-x-hidden;
+  }
+
   body {
     @apply font-sans text-gray-900 bg-white min-h-screen overflow-x-hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  #root {
+    @apply overflow-x-hidden;
   }
 
   .dark body {

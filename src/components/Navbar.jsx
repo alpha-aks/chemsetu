@@ -109,7 +109,7 @@ const Navbar = () => {
 
           {/* Mobile menu button with Atom Animation */}
           <button 
-            className="md:hidden relative w-10 h-10 focus:outline-none z-50" 
+            className="md:hidden relative w-10 h-10 overflow-hidden focus:outline-none z-50" 
             onClick={() => setIsOpen(!isOpen)}
           >
             <div className="absolute inset-0 flex items-center justify-center">

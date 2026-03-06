@@ -1,14 +1,16 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, FlaskConical, CheckCircle } from 'lucide-react';
-import { usePrismicDocumentByUID } from '@prismicio/react';
+import { usePrismicDocumentByID, usePrismicDocumentByUID } from '@prismicio/react';
 import { PrismicRichText } from '@prismicio/react';
 import SEO from './SEO';
 
 const CompoundDetails = () => {
   const { id } = useParams(); // This is actually the UID from the URL
-  const [document, { state }] = usePrismicDocumentByUID('compound', id);
-  const loading = state === 'loading';
+  const [documentByUid, { state: uidState }] = usePrismicDocumentByUID('compound', id);
+  const [documentById, { state: idState }] = usePrismicDocumentByID(id);
+  const document = documentByUid || documentById;
+  const loading = uidState === 'loading' || idState === 'loading';
   const product = document?.data;
 
   const richTextToPlainText = (field) => {
@@ -22,7 +24,8 @@ const CompoundDetails = () => {
       .trim();
   };
 
-  const productCode = product?.product_code || product?.cas_id || document?.uid || id;
+  const routeValue = document?.uid || document?.id || id;
+  const productCode = product?.product_code || product?.cas_id || document?.uid || routeValue;
   const intermediateName = product?.name || product?.product_name || '';
 
   const highlightItems = Array.isArray(product?.highlights)
@@ -61,7 +64,7 @@ const CompoundDetails = () => {
     },
     "offers": {
       "@type": "Offer",
-      "url": `https://chemsetu.com/compounds/${id}`,
+      "url": `https://chemsetu.com/compounds/${routeValue}`,
       "priceCurrency": "USD",
       "price": "0", 
       "availability": "https://schema.org/InStock",
@@ -77,7 +80,7 @@ const CompoundDetails = () => {
       <SEO 
         title={seoTitle} 
         description={seoDescription}
-        url={`/compounds/${id}`}
+        url={`/compounds/${routeValue}`}
         schema={productSchema}
       />
       <div className="max-w-7xl mx-auto px-4">

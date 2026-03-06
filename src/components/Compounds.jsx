@@ -2,7 +2,6 @@ import React, { useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Search, FlaskConical, ArrowRight } from 'lucide-react';
 import { useAllPrismicDocumentsByType } from '@prismicio/react';
-import { PrismicRichText } from '@prismicio/react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Sphere, Torus, Environment, ContactShadows, Float } from '@react-three/drei';
 import SEO from './SEO';
@@ -166,7 +165,7 @@ const Compounds = () => {
         </div>
       </div>
 
-      {/* The Product Grid */}
+      {/* The Compounds Table */}
       {loading ? (
         <div className="text-center py-20">Loading library...</div>
       ) : (
@@ -177,52 +176,84 @@ const Compounds = () => {
             </div>
           ) : null}
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {filteredDocuments.map((doc) => (
-            <Link to={`/compounds/${doc.uid}`} key={doc.id} className="block">
-              <div className="bg-white rounded-xl md:rounded-2xl p-6 md:p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 group cursor-pointer hover:-translate-y-1 flex flex-col h-full">
-                
-                {/* Image or Icon & Category Tag */}
-                {doc.data.image && doc.data.image.url ? (
-                  <div className="mb-6">
-                    <div className="w-full h-48 mb-4 overflow-hidden rounded-xl bg-slate-50 flex items-center justify-center">
-                      <img src={doc.data.image.url} alt={doc.data.name} className="w-full h-full object-contain" />
-                    </div>
-                    <div className="flex justify-end">
-                      <span className="text-xs font-bold px-3 py-1 bg-slate-100 text-slate-600 rounded-full uppercase tracking-wider">
-                        {doc.data.category}
-                      </span>
-                    </div>
-                  </div>
-                ) : (
-                  <div className="flex justify-between items-start mb-6">
-                    <div className="bg-slate-50 p-3 rounded-xl group-hover:bg-blue-50 transition-colors">
-                      <FlaskConical className="text-blue-600 w-8 h-8" />
-                    </div>
-                    <span className="text-xs font-bold px-3 py-1 bg-slate-100 text-slate-600 rounded-full uppercase tracking-wider">
-                      {doc.data.category}
-                    </span>
-                  </div>
-                )}
+          <div className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="min-w-[900px] w-full text-left">
+                <thead className="bg-slate-50">
+                  <tr className="text-xs font-bold tracking-wider uppercase text-slate-500">
+                    <th className="px-4 py-4 w-[80px]">Sr No</th>
+                    <th className="px-4 py-4 w-[110px]">Photo</th>
+                    <th className="px-4 py-4">Product Name</th>
+                    <th className="px-4 py-4 w-[200px]">CAS No</th>
+                    <th className="px-4 py-4 w-[160px]">Structure</th>
+                    <th className="px-4 py-4 w-[140px]">View</th>
+                  </tr>
+                </thead>
 
-                {/* Title & Description */}
-                <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-700 transition-colors">
-                  {doc.data.name}
-                </h3>
-                <div className="text-slate-600 text-sm leading-relaxed mb-6 flex-grow line-clamp-3">
-                  <PrismicRichText field={doc.data.description} />
-                </div>
+                <tbody className="divide-y divide-slate-100">
+                  {filteredDocuments.map((doc, index) => {
+                    const photoUrl = doc?.data?.image?.url;
+                    const name = doc?.data?.name || doc?.uid || 'Compound';
+                    const casId = doc?.data?.cas_id || '—';
+                    const formula = doc?.data?.formula;
+                    const routeId = doc?.uid || doc?.id;
+                    const canView = typeof routeId === 'string' && routeId.length > 0;
 
-                {/* Footer: Scale & Arrow */}
-                <div className="flex items-center justify-between pt-6 border-t border-slate-50 mt-auto">
-                  <div className="text-xs font-semibold text-slate-400">
-                    Capacity: <span className="text-slate-700">{doc.data.scale}</span>
-                  </div>
-                  <ArrowRight className="w-5 h-5 text-slate-300 group-hover:text-blue-600 transform group-hover:translate-x-1 transition-all" />
-                </div>
-              </div>
-            </Link>
-          ))}
+                    return (
+                      <tr key={doc.id} className="hover:bg-slate-50/60 transition-colors">
+                        <td className="px-4 py-4 text-sm font-semibold text-slate-700">{index + 1}</td>
+
+                        <td className="px-4 py-4">
+                          {photoUrl ? (
+                            <div className="w-14 h-14 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center overflow-hidden">
+                              <img src={photoUrl} alt={name} className="w-full h-full object-contain" />
+                            </div>
+                          ) : (
+                            <div className="w-14 h-14 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center">
+                              <FlaskConical className="w-6 h-6 text-blue-600" />
+                            </div>
+                          )}
+                        </td>
+
+                        <td className="px-4 py-4">
+                          <div className="text-sm md:text-base font-bold text-slate-900">{name}</div>
+                          {doc?.data?.product_code ? (
+                            <div className="text-xs text-slate-500 mt-1">Product Code: {doc.data.product_code}</div>
+                          ) : null}
+                        </td>
+
+                        <td className="px-4 py-4 text-sm font-semibold text-slate-700">{casId}</td>
+
+                        <td className="px-4 py-4">
+                          {photoUrl ? (
+                            <div className="w-28 h-14 rounded-xl bg-white border border-slate-200 flex items-center justify-center overflow-hidden">
+                              <img src={photoUrl} alt={`${name} structure`} className="w-full h-full object-contain" />
+                            </div>
+                          ) : (
+                            <div className="text-xs text-slate-500">{formula || '—'}</div>
+                          )}
+                        </td>
+
+                        <td className="px-4 py-4">
+                          {canView ? (
+                            <Link
+                              to={`/compounds/${routeId}`}
+                              className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-secondary text-white text-sm font-bold hover:bg-secondary/90 transition-colors"
+                              aria-label={`View more details for ${name}`}
+                            >
+                              View More
+                              <ArrowRight className="w-4 h-4" />
+                            </Link>
+                          ) : (
+                            <span className="text-sm text-slate-400">—</span>
+                          )}
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       )}

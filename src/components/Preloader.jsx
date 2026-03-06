@@ -33,12 +33,9 @@ const Preloader = () => {
         />
       </div>
 
-      {/* Center split line (above panels, behind logo) */}
-      <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-px bg-slate-200 z-10" />
-
       {/* Logo: centered on screen, glowing while loading */}
       <motion.div
-        className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 z-20"
+        className="absolute inset-0 z-20 flex items-center justify-center"
         variants={{
           initial: { x: 0, opacity: 1, scale: 1 },
           exit: { x: '-120vw', opacity: 0, scale: 0.95 },
@@ -60,7 +57,7 @@ const Preloader = () => {
           <img
             src="/chemsetu-logo.png"
             alt="ChemSetu"
-            className="w-full h-full object-contain"
+            className="w-full h-full object-contain -translate-x-px -translate-y-px"
             draggable={false}
           />
         </motion.div>
