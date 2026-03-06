@@ -34,7 +34,7 @@ const Preloader = () => {
       </div>
 
       {/* Center split line (above panels, behind logo) */}
-      <div className="absolute inset-y-0 left-1/2 w-px bg-slate-200 z-10" />
+      <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-px bg-slate-200 z-10" />
 
       {/* Logo: centered on screen, glowing while loading */}
       <motion.div
