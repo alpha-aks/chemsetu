@@ -59,6 +59,11 @@ const SEO = ({
       <meta property="og:description" content={metaDescription} />
       <meta property="og:url" content={metaUrl} />
       <meta property="og:image" content={metaImage} />
+      <meta property="og:image:secure_url" content={metaImage} />
+      <meta property="og:image:type" content="image/png" />
+      <meta property="og:image:alt" content="ChemSetu Logo" />
+      <meta property="og:image:width" content="512" />
+      <meta property="og:image:height" content="512" />
       <meta property="og:site_name" content={siteTitle} />
 
       {/* Twitter */}
@@ -66,6 +71,7 @@ const SEO = ({
       <meta name="twitter:title" content={metaTitle} />
       <meta name="twitter:description" content={metaDescription} />
       <meta name="twitter:image" content={metaImage} />
+      <meta name="twitter:image:alt" content="ChemSetu Logo" />
 
       {/* Structured Data */}
       <script type="application/ld+json">
