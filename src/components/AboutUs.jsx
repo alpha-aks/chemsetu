@@ -58,12 +58,15 @@ const TeamMemberProfile = ({ member }) => {
         <div className="lg:col-span-4">
           <div className="relative rounded-3xl overflow-hidden bg-slate-50 border border-slate-200 shadow-sm">
             <div className="aspect-[4/5] w-full">
-              <img
-                src={member.imageUrl}
-                alt={member.imageAlt || member.name}
-                className="w-full h-full object-cover"
-                loading="lazy"
-              />
+              <figure className="w-full h-full">
+                <img
+                  src={member.imageUrl}
+                  alt={member.imageAlt || `${member.name} - ${member.role}`}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+                <figcaption className="sr-only">{member.name} — {member.role}</figcaption>
+              </figure>
             </div>
 
             {/* Subtle frame */}
@@ -112,12 +115,61 @@ const TeamMemberProfile = ({ member }) => {
 
 
 const AboutUs = () => {
+  const siteUrl = 'https://chemsetu.com';
+  const aboutUrl = `${siteUrl}/about`;
+  const organizationId = `${siteUrl}/#organization`;
+
+  const aboutSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": organizationId,
+        "name": "ChemSetu",
+        "url": siteUrl,
+        "logo": {
+          "@type": "ImageObject",
+          "url": `${siteUrl}/chemsetu-logo.png`
+        }
+      },
+      {
+        "@type": "WebPage",
+        "@id": `${aboutUrl}#webpage`,
+        "url": aboutUrl,
+        "name": "About Us | ChemSetu",
+        "about": teamMembers.map((member) => ({ "@id": `${siteUrl}/#${encodeURIComponent(member.name.toLowerCase().replace(/\s+/g, '-'))}` }))
+      },
+      ...teamMembers.flatMap((member) => {
+        const personId = `${siteUrl}/#${encodeURIComponent(member.name.toLowerCase().replace(/\s+/g, '-'))}`;
+        const imageId = `${personId}-image`;
+        return [
+          {
+            "@type": "Person",
+            "@id": personId,
+            "name": member.name,
+            "jobTitle": member.role,
+            "image": { "@id": imageId },
+            "worksFor": { "@id": organizationId },
+            "description": [member.education, member.experience, member.expertise].filter(Boolean).join(' | ')
+          },
+          {
+            "@type": "ImageObject",
+            "@id": imageId,
+            "url": member.imageUrl,
+            "caption": `${member.name} - ${member.role}`
+          }
+        ];
+      })
+    ]
+  };
+
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-slate-800">
       <SEO 
         title="About Us" 
         description="Learn about ChemSetu's mission, vision, and our expert team led by Mr. Sachin J. Mahangare. We bridge the gap between scientific innovation and industrial scale synthesis."
         url="/about"
+        schema={aboutSchema}
       />
       
       {/* --- 1. Hero Section --- */}

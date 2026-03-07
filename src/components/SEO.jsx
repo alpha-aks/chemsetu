@@ -7,6 +7,7 @@ const SEO = ({
   keywords, 
   url, 
   image,
+  imageAlt,
   type = 'website',
   schema
 }) => {
@@ -21,6 +22,7 @@ const SEO = ({
   const metaKeywords = keywords || defaultKeywords;
   const metaUrl = url ? `${siteUrl}${url}` : siteUrl;
   const metaImage = image ? (image.startsWith('http') ? image : `${siteUrl}${image}`) : defaultImage;
+  const metaImageAlt = imageAlt || metaTitle;
 
   // Default Organization Schema
   const defaultSchema = {
@@ -61,7 +63,7 @@ const SEO = ({
       <meta property="og:image" content={metaImage} />
       <meta property="og:image:secure_url" content={metaImage} />
       <meta property="og:image:type" content="image/png" />
-      <meta property="og:image:alt" content="ChemSetu Logo" />
+      <meta property="og:image:alt" content={metaImageAlt} />
       <meta property="og:image:width" content="512" />
       <meta property="og:image:height" content="512" />
       <meta property="og:site_name" content={siteTitle} />
@@ -71,7 +73,7 @@ const SEO = ({
       <meta name="twitter:title" content={metaTitle} />
       <meta name="twitter:description" content={metaDescription} />
       <meta name="twitter:image" content={metaImage} />
-      <meta name="twitter:image:alt" content="ChemSetu Logo" />
+      <meta name="twitter:image:alt" content={metaImageAlt} />
 
       {/* Structured Data */}
       <script type="application/ld+json">
