@@ -115,7 +115,7 @@ const TeamMemberProfile = ({ member }) => {
 
 
 const AboutUs = () => {
-  const siteUrl = 'https://chemsetu.com';
+  const siteUrl = 'https://chemsetu.in';
   const aboutUrl = `${siteUrl}/about`;
   const organizationId = `${siteUrl}/#organization`;
 

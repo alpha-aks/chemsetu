@@ -1,7 +1,7 @@
 {
   "name": "chem-setu-website",
   "version": "0.1.0",
-  "homepage": "https://chemsetu.com",
+  "homepage": "https://chemsetu.in",
   "private": true,
   "engines": {
     "node": ">=20 <21",

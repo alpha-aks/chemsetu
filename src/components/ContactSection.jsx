@@ -36,8 +36,8 @@ const ContactSection = () => {
     "@context": "https://schema.org",
     "@type": "ChemicalIndustry",
     "name": "ChemSetu",
-    "image": "https://chemsetu.com/chemsetu-logo.png",
-    "url": "https://chemsetu.com",
+    "image": "https://chemsetu.in/chemsetu-logo.png",
+    "url": "https://chemsetu.in",
     "telephone": "+919822404444",
     "address": {
       "@type": "PostalAddress",
@@ -184,7 +184,7 @@ const ContactSection = () => {
               <input type="hidden" name="_subject" value="New Contact Form Submission from ChemSetu Website" />
               <input type="hidden" name="_captcha" value="false" />
               <input type="hidden" name="_template" value="table" />
-              <input type="hidden" name="_next" value="https://chemsetu.com" />
+              <input type="hidden" name="_next" value="https://chemsetu.in" />
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div>

@@ -64,7 +64,7 @@ const CompoundDetails = () => {
     },
     "offers": {
       "@type": "Offer",
-      "url": `https://chemsetu.com/compounds/${routeValue}`,
+      "url": `https://chemsetu.in/compounds/${routeValue}`,
       "priceCurrency": "USD",
       "price": "0", 
       "availability": "https://schema.org/InStock",
