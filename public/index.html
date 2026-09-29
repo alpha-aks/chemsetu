@@ -52,21 +52,43 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>ChemSetu | API Impurities & Custom Synthesis Solutions</title>
+    <title>ChemSetu - Chemsetu Lifesciences | API Impurities & Custom Synthesis Solutions</title>
     
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Organization",
+        "@type": ["Organization", "Corporation"],
         "name": "ChemSetu",
+        "legalName": "Chemsetu Lifesciences Private Limited",
+        "alternateName": [
+          "ChemSetu",
+          "Chemsetu Lifesciences",
+          "Chem Setu",
+          "Chemsetu Lifesciences Pvt Ltd"
+        ],
         "url": "https://www.chemsetu.in",
         "logo": "https://www.chemsetu.in/chemsetu-logo.png",
-        "description": "Bridging the gap between academic research and industrial application with precision and confidentiality.",
+        "image": "https://www.chemsetu.in/chemsetu-banner.png",
+        "description": "ChemSetu (Chemsetu Lifesciences Private Limited) is a premier chemical synthesis and research provider based in Pune, India. We specialize in high-purity API Impurities, advanced Pharmaceutical Intermediates, and custom synthesis solutions.",
+        "foundingDate": "2023",
+        "founders": [
+          {
+            "@type": "Person",
+            "name": "Sachin Jaysing Mahangare",
+            "jobTitle": "Director & Founder"
+          },
+          {
+            "@type": "Person",
+            "name": "Rupali Sachin Mahangare",
+            "jobTitle": "Director"
+          }
+        ],
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "S. No. 80/8 Akshay Industries, Mahadev Nagar, Nanded Phata",
           "addressLocality": "Pune",
+          "addressRegion": "Maharashtra",
           "postalCode": "411041",
           "addressCountry": "IN"
         },
@@ -74,8 +96,23 @@
           "@type": "ContactPoint",
           "telephone": "+91-8805245811",
           "contactType": "customer service",
-          "email": "info.chemsetu@gmail.com"
+          "email": "info.chemsetu@gmail.com",
+          "areaServed": "IN"
         },
+        "knowsAbout": [
+          "API Impurities",
+          "Custom Synthesis",
+          "Pharmaceutical Intermediates",
+          "Drug Discovery",
+          "Chemical Research"
+        ],
+        "identifier": [
+          {
+            "@type": "PropertyValue",
+            "name": "CIN",
+            "value": "U21001PN2023PTC218572"
+          }
+        ],
         "sameAs": [
           "https://www.linkedin.com/"
         ]
@@ -83,8 +120,33 @@
     </script>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
+    <noscript>
+      <div style="padding: 20px; font-family: sans-serif;">
+        <h1>ChemSetu - Chemsetu Lifesciences Private Limited</h1>
+        <p>Bridging Science and Synthesis. Your trusted partner for high-purity API Impurities, advanced Intermediates, and complex Custom Synthesis solutions based in Pune, Maharashtra, India.</p>
+        <p>Contact: info.chemsetu@gmail.com | Phone: +91-8805245811</p>
+        <nav>
+          <a href="/about">About Us</a> | 
+          <a href="/services">Services</a> | 
+          <a href="/compounds">Compounds</a> | 
+          <a href="/contact">Contact</a>
+        </nav>
+      </div>
+    </noscript>
+    <div id="root">
+      <!-- Semantic SEO Shell (hydrated by React on load) -->
+      <header style="display:none;" aria-hidden="true">
+        <h1>ChemSetu - Chemsetu Lifesciences Private Limited</h1>
+        <p>Premier Chemical Synthesis and Research Solutions in Pune, India</p>
+      </header>
+      <main style="display:none;" aria-hidden="true">
+        <section>
+          <h2>Bridging Science and Synthesis</h2>
+          <p>ChemSetu specializes in high-purity API Impurities, advanced Intermediates, and complex Custom Synthesis solutions for pharmaceutical companies worldwide.</p>
+          <p>Led by industry expert Mr. Sachin J. Mahangare, Chemsetu Lifesciences provides cutting-edge R&amp;D and contract research services.</p>
+        </section>
+      </main>
+    </div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
