@@ -15,7 +15,7 @@ const SEO = ({
   const defaultDescription = 'Your trusted partner for high-purity API Impurities, advanced Intermediates, and complex Custom Synthesis solutions.';
   const defaultKeywords = 'API Impurities, Custom Synthesis, Pharmaceutical Intermediates, ChemSetu, Chemical Synthesis, Drug Development';
   const siteUrl = 'https://www.chemsetu.in';
-  const defaultImage = `${siteUrl}/chemsetu-logo.png`;
+  const defaultImage = `${siteUrl}/chemsetu-banner.png`;
 
   const metaTitle = title ? `${title} | ${siteTitle}` : `${siteTitle} - Bridging Science and Synthesis`;
   const metaDescription = description || defaultDescription;
@@ -30,7 +30,7 @@ const SEO = ({
     "@type": "Organization",
     "name": "ChemSetu",
     "url": siteUrl,
-    "logo": defaultImage,
+    "logo": `${siteUrl}/chemsetu-logo.png`,
     "description": defaultDescription,
     "address": {
       "@type": "PostalAddress",
@@ -64,8 +64,8 @@ const SEO = ({
       <meta property="og:image:secure_url" content={metaImage} />
       <meta property="og:image:type" content="image/png" />
       <meta property="og:image:alt" content={metaImageAlt} />
-      <meta property="og:image:width" content="512" />
-      <meta property="og:image:height" content="512" />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
       <meta property="og:site_name" content={siteTitle} />
 
       {/* Twitter */}
