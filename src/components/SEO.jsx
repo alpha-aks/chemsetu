@@ -14,7 +14,7 @@ const SEO = ({
   const siteTitle = 'ChemSetu';
   const defaultDescription = 'Your trusted partner for high-purity API Impurities, advanced Intermediates, and complex Custom Synthesis solutions.';
   const defaultKeywords = 'API Impurities, Custom Synthesis, Pharmaceutical Intermediates, ChemSetu, Chemical Synthesis, Drug Development';
-  const siteUrl = 'https://chemsetu.in';
+  const siteUrl = 'https://www.chemsetu.in';
   const defaultImage = `${siteUrl}/chemsetu-logo.png`;
 
   const metaTitle = title ? `${title} | ${siteTitle}` : `${siteTitle} - Bridging Science and Synthesis`;

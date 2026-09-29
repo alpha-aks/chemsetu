@@ -2,4 +2,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://chemsetu.in/sitemap.xml
+Sitemap: https://www.chemsetu.in/sitemap.xml
