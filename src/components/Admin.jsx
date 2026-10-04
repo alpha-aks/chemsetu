@@ -28,8 +28,8 @@ const Admin = () => {
   const uploadToCloudinary = async (file) => {
     const data = new FormData();
     data.append("file", file);
-    data.append("upload_preset", "chemsetu_preset"); // We will create this preset
-    data.append("cloud_name", "YOUR_CLOUD_NAME"); // Replace with your cloud name
+    data.append("upload_preset", "chemsetu_preset");
+    data.append("cloud_name", "YOUR_CLOUD_NAME");
 
     try {
       const res = await fetch("https://api.cloudinary.com/v1_1/YOUR_CLOUD_NAME/image/upload", {
@@ -51,12 +51,10 @@ const Admin = () => {
     try {
       let imageUrl = '';
 
-      // 1. Upload Image to Cloudinary
       if (formData.image) {
         imageUrl = await uploadToCloudinary(formData.image);
       }
 
-      // 2. Save Data to Firestore
       await addDoc(collection(db, "compounds"), {
         name: formData.name,
         category: formData.category,
@@ -97,7 +95,6 @@ const Admin = () => {
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Image Upload */}
           <div className="w-full">
             <label className="block text-sm font-medium text-slate-700 mb-2">Product Image</label>
             <div className="border-2 border-dashed border-slate-300 rounded-xl p-8 text-center hover:border-blue-500 transition-colors relative">

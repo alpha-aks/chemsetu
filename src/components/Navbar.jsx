@@ -10,7 +10,6 @@ const Navbar = () => {
 
   useEffect(() => {
     const stored = localStorage.getItem('theme');
-    // Default to light mode unless the user explicitly chose a theme before.
     const shouldBeDark = stored ? stored === 'dark' : false;
 
     document.documentElement.classList.toggle('dark', shouldBeDark);
@@ -45,7 +44,6 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
-          {/* Logo */}
           <Link to="/">
             <motion.div 
               className="flex items-center space-x-2"
@@ -56,7 +54,6 @@ const Navbar = () => {
             </motion.div>
           </Link>
 
-          {/* Navigation Links */}
           <div className="hidden md:flex items-center space-x-8">
             {['Services', 'About Us', 'Compounds', 'Contact'].map((item) => {
               const isPage = ['Compounds', 'Contact', 'About Us', 'Services'].includes(item);
@@ -86,7 +83,6 @@ const Navbar = () => {
               );
             })}
 
-            {/* Dark mode toggle */}
             <motion.button
               type="button"
               aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
@@ -107,13 +103,11 @@ const Navbar = () => {
             </motion.button>
           </div>
 
-          {/* Mobile menu button with Atom Animation */}
           <button 
             className="md:hidden relative w-10 h-10 overflow-hidden focus:outline-none z-50" 
             onClick={() => setIsOpen(!isOpen)}
           >
             <div className="absolute inset-0 flex items-center justify-center">
-              {/* Nucleus */}
               <motion.div 
                 className="absolute w-2 h-2 bg-secondary rounded-full"
                 initial={false}
@@ -121,7 +115,6 @@ const Navbar = () => {
                 transition={{ duration: 0.3 }}
               />
               
-              {/* Line 1 - Top to Orbit 1 */}
               <motion.span
                 className="absolute w-6 h-0.5 bg-primary rounded-full origin-center"
                 initial={false}
@@ -129,7 +122,6 @@ const Navbar = () => {
                 transition={{ duration: 0.3 }}
               />
               
-              {/* Line 2 - Middle to Orbit 2 */}
               <motion.span
                 className="absolute w-6 h-0.5 bg-primary rounded-full origin-center"
                 initial={false}
@@ -137,7 +129,6 @@ const Navbar = () => {
                 transition={{ duration: 0.3 }}
               />
               
-              {/* Line 3 - Bottom to Orbit 3 */}
               <motion.span
                 className="absolute w-6 h-0.5 bg-primary rounded-full origin-center"
                 initial={false}
@@ -145,7 +136,6 @@ const Navbar = () => {
                 transition={{ duration: 0.3 }}
               />
               
-              {/* Spinning Effect Container */}
               {isOpen && (
                 <motion.div
                   className="absolute inset-0 rounded-full border border-primary/10"
@@ -158,7 +148,6 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -201,7 +190,6 @@ const Navbar = () => {
                 );
               })}
 
-              {/* Dark mode toggle (mobile) */}
               <motion.button
                 type="button"
                 aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}

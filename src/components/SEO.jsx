@@ -6,10 +6,10 @@ const SEO = ({
   description, 
   keywords, 
   url, 
-  image,
-  imageAlt,
-  type = 'website',
-  schema
+  image, 
+  imageAlt, 
+  type = 'website', 
+  schema 
 }) => {
   const siteTitle = 'ChemSetu';
   const defaultDescription = 'Your trusted partner for high-purity API Impurities, advanced Intermediates, and complex Custom Synthesis solutions.';
@@ -20,11 +20,12 @@ const SEO = ({
   const metaTitle = title ? `${title} | ${siteTitle}` : `${siteTitle} - Bridging Science and Synthesis`;
   const metaDescription = description || defaultDescription;
   const metaKeywords = keywords || defaultKeywords;
-  const metaUrl = url ? `${siteUrl}${url}` : siteUrl;
+  const metaUrl = url 
+    ? (url === '/' ? `${siteUrl}/` : (url.startsWith('http') ? url : `${siteUrl}${url.startsWith('/') ? '' : '/'}${url}`))
+    : `${siteUrl}/`;
   const metaImage = image ? (image.startsWith('http') ? image : `${siteUrl}${image}`) : defaultImage;
   const metaImageAlt = imageAlt || metaTitle;
 
-  // Default Organization Schema
   const defaultSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -49,13 +50,11 @@ const SEO = ({
 
   return (
     <Helmet>
-      {/* Standard Metadata */}
       <title>{metaTitle}</title>
       <meta name="description" content={metaDescription} />
       <meta name="keywords" content={metaKeywords} />
       <link rel="canonical" href={metaUrl} />
 
-      {/* Open Graph / Facebook */}
       <meta property="og:type" content={type} />
       <meta property="og:title" content={metaTitle} />
       <meta property="og:description" content={metaDescription} />
@@ -68,14 +67,12 @@ const SEO = ({
       <meta property="og:image:height" content="630" />
       <meta property="og:site_name" content={siteTitle} />
 
-      {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={metaTitle} />
       <meta name="twitter:description" content={metaDescription} />
       <meta name="twitter:image" content={metaImage} />
       <meta name="twitter:image:alt" content={metaImageAlt} />
 
-      {/* Structured Data */}
       <script type="application/ld+json">
         {JSON.stringify(jsonLd)}
       </script>

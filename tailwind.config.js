@@ -7,9 +7,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#2E3192',     // Chemsetu Blue
-        secondary: '#00A651',   // Chemsetu Green
-        accent: '#64ffda',      // Lighter green for accents
+        primary: '#2E3192',
+        secondary: '#00A651',
+        accent: '#64ffda',
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],

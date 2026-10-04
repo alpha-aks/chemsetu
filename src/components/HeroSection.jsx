@@ -10,7 +10,6 @@ const HeroSection = () => {
       <FloatingParticles />
       <div className="container mx-auto px-4 relative z-10 h-full pt-20 lg:pt-0">
         <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-0 lg:gap-12 h-full justify-between lg:justify-center pb-10 lg:pb-0">
-          {/* Left side - Text content (50% on mobile) */}
           <motion.div 
             className="w-full lg:w-[90%] text-left h-auto lg:h-full flex flex-col justify-center relative z-10 mt-8 lg:mt-0"
             initial={{ opacity: 0, x: -50 }}
@@ -65,7 +64,6 @@ const HeroSection = () => {
             </motion.div>
           </motion.div>
           
-          {/* Right side - Image (50% on mobile) */}
           <motion.div 
             className="relative h-[50vh] lg:h-full w-full flex items-center justify-center z-0"
             initial={{ opacity: 0, x: 50 }}

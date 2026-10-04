@@ -3,10 +3,7 @@ import { motion } from 'framer-motion';
 
 const ShieldMoleculeIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-32 h-32 text-[#2E3192]">
-    {/* Shield Outline */}
     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" className="stroke-[#2E3192]" />
-    
-    {/* Molecule Structure Inside */}
     <g className="stroke-[#00A651]">
       <circle cx="12" cy="12" r="2" fill="currentColor" className="text-[#00A651] opacity-20" />
       <circle cx="12" cy="8" r="1" />

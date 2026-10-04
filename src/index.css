@@ -28,7 +28,6 @@
   }
 }
 
-/* Custom scrollbar */
 ::-webkit-scrollbar {
   @apply w-2;
 }
@@ -58,13 +57,11 @@
 }
 
 @layer utilities {
-  /* Backgrounds */
   .dark .bg-white { @apply bg-slate-950; }
   .dark .bg-slate-50 { @apply bg-slate-950; }
   .dark .bg-slate-100 { @apply bg-slate-900; }
   .dark .bg-gray-100 { @apply bg-slate-900; }
 
-  /* Text */
   .dark .text-gray-900 { @apply text-slate-100; }
   .dark .text-gray-800 { @apply text-slate-100; }
   .dark .text-gray-700 { @apply text-slate-200; }
@@ -74,7 +71,6 @@
   .dark .text-slate-600 { @apply text-slate-300; }
   .dark .text-slate-500 { @apply text-slate-400; }
 
-  /* Borders */
   .dark .border-slate-50 { @apply border-slate-900; }
   .dark .border-slate-100 { @apply border-slate-800; }
   .dark .border-slate-200 { @apply border-slate-800; }

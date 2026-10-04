@@ -58,7 +58,6 @@ const InfrastructureTimeline = () => {
         </div>
 
         <div className="relative max-w-5xl mx-auto">
-          {/* Connecting Line (Desktop) */}
           <div className="hidden md:block absolute top-8 left-0 w-full h-1 bg-gray-100 -z-0">
             <motion.div
               className="h-full bg-[#00A651]"
@@ -69,7 +68,6 @@ const InfrastructureTimeline = () => {
             />
           </div>
 
-          {/* Connecting Line (Mobile) */}
           <div className="md:hidden absolute left-8 top-0 w-1 h-full bg-gray-100 -z-0">
             <motion.div
               className="w-full bg-[#00A651]"
@@ -90,12 +88,10 @@ const InfrastructureTimeline = () => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.3 }}
               >
-                {/* Node Point */}
                 <div className="absolute left-0 md:left-1/2 md:-translate-x-1/2 top-0 w-16 h-16 bg-white border-4 border-[#2E3192] rounded-full flex items-center justify-center text-[#2E3192] shadow-lg z-10 group hover:border-[#00A651] hover:text-[#00A651] transition-colors duration-300">
                   <step.Icon />
                 </div>
 
-                {/* Content Card */}
                 <div className="mt-2 md:mt-24 bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300 w-full">
                   <h3 className="text-xl font-bold text-[#2E3192] mb-2">{step.title}</h3>
                   <p className="text-gray-600 leading-relaxed">{step.description}</p>

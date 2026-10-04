@@ -69,7 +69,6 @@ const ServiceCard = ({ service, index }) => (
     transition={{ delay: index * 0.1 }}
     className="group relative flex flex-col overflow-hidden rounded-2xl bg-white dark:bg-slate-950 border border-slate-100 dark:border-slate-800 shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
   >
-    {/* Image Header */}
     <div className="relative h-44 w-full overflow-hidden">
       <img
         src={service.image?.src}
@@ -80,14 +79,12 @@ const ServiceCard = ({ service, index }) => (
       <div className="absolute inset-0 bg-black/20 transition-opacity group-hover:bg-black/10" />
     </div>
 
-    {/* Floating Icon Circle */}
     <div className="relative flex justify-center">
       <div className="absolute -top-10 flex h-20 w-20 items-center justify-center rounded-full border-[6px] border-white dark:border-slate-950 bg-white dark:bg-slate-950 shadow-lg text-primary transition-transform duration-300 group-hover:scale-110">
         {service.icon ? React.createElement(service.icon, { size: 28 }) : null}
       </div>
     </div>
 
-    {/* Text Body */}
     <div className="flex flex-1 flex-col items-center p-8 pt-12 text-center">
       <h3 className="mb-3 text-xl font-bold text-slate-800 dark:text-slate-100 transition-colors group-hover:text-secondary">
         {service.title}
@@ -107,10 +104,8 @@ const Services = () => {
         description="Explore our comprehensive chemical services including API Intermediates, Process Development, Custom Synthesis, and Impurity Standards."
         url="/services"
       />
-      {/* Header Section */}
       <ServicesHeader />
 
-      {/* Services Grid */}
       <section className="py-12 px-6">
         <div className="container mx-auto max-w-7xl">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -121,7 +116,6 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Infrastructure & Scale-Up Flow */}
       <section className="py-24 px-6 bg-slate-50">
         <div className="container mx-auto max-w-7xl">
           <div className="text-center mb-16">
@@ -130,7 +124,6 @@ const Services = () => {
           </div>
 
           <div className="relative">
-            {/* Connecting Line (Desktop) */}
             <div className="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-blue-200 via-secondary/50 to-blue-200 -translate-y-1/2 z-0"></div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative z-10">

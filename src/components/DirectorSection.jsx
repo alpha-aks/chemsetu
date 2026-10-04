@@ -4,8 +4,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 const DirectorSection = () => {
   const [currentImage, setCurrentImage] = useState(0);
   
-  // Placeholder images array - replace 'src' with actual image paths later
-  // You can add up to 4 images here
   const images = [
     { id: 1, label: "Director Photo", bg: "bg-gradient-to-br from-gray-100 to-gray-200" },
     { id: 2, label: "Lab Facility", bg: "bg-blue-50" },
@@ -32,8 +30,6 @@ const DirectorSection = () => {
     <section className="py-20 bg-gray-50 overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:grid lg:grid-cols-2 gap-12 items-center">
-          
-          {/* Left Side - Text Content */}
           <motion.div 
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -69,7 +65,6 @@ const DirectorSection = () => {
               <p className="text-xl font-bold text-gray-900">2023 in Pune, Maharashtra</p>
             </div>
 
-            {/* Quote Card */}
             <motion.div 
               className="mt-8 p-8 bg-white rounded-xl shadow-xl border-l-4 border-secondary relative"
               whileHover={{ y: -5 }}
@@ -82,7 +77,6 @@ const DirectorSection = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right Side - Photo Carousel */}
           <motion.div 
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -100,7 +94,6 @@ const DirectorSection = () => {
                    transition={{ duration: 0.5 }}
                    className={`absolute inset-0 flex items-center justify-center ${images[currentImage].bg}`}
                  >
-                    {/* Placeholder Content - Replace with <img src={...} /> */}
                     <div className="text-center p-10">
                         <div className="w-32 h-32 bg-white rounded-full mx-auto mb-6 flex items-center justify-center text-4xl text-primary font-bold shadow-inner">
                           {images[currentImage].id}
@@ -111,7 +104,6 @@ const DirectorSection = () => {
                  </motion.div>
                </AnimatePresence>
 
-               {/* Navigation Arrows */}
                <button 
                  onClick={prevImage}
                  className="absolute left-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/80 hover:bg-white text-primary shadow-lg transition-all opacity-0 group-hover:opacity-100 z-20"
@@ -132,7 +124,6 @@ const DirectorSection = () => {
                  </svg>
                </button>
 
-               {/* Carousel Indicators */}
                <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-2 z-20">
                  {images.map((_, idx) => (
                    <button
@@ -145,11 +136,9 @@ const DirectorSection = () => {
                </div>
             </div>
             
-            {/* Decorative Elements */}
             <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-primary/10 rounded-full blur-3xl -z-10"></div>
             <div className="absolute -top-10 -left-10 w-64 h-64 bg-secondary/10 rounded-full blur-3xl -z-10"></div>
             
-            {/* Floating chemical element decoration */}
             <motion.div 
               className="absolute top-10 -right-4 bg-white p-3 rounded-lg shadow-lg z-20 hidden lg:block"
               animate={{ y: [0, -10, 0] }}
@@ -166,7 +155,6 @@ const DirectorSection = () => {
               <div className="text-primary font-bold text-xs">Custom Synthesis</div>
             </motion.div>
           </motion.div>
-
         </div>
       </div>
     </section>

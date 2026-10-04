@@ -11,10 +11,7 @@ const PrivacyPage = () => {
         url="/privacy"
       />
       <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-100">
-        
-        {/* Header */}
         <div className="bg-emerald-900 px-8 py-10 text-center relative overflow-hidden">
-             {/* Abstract Background Decoration */}
              <div className="absolute top-0 right-0 w-full h-full opacity-10">
                 <div className="absolute bottom-0 left-0 w-40 h-40 bg-white rounded-full blur-3xl"></div>
             </div>
@@ -24,9 +21,7 @@ const PrivacyPage = () => {
             <p className="text-emerald-200 mt-2 relative z-10">Your Trust is Our Formula.</p>
         </div>
 
-        {/* Content */}
         <div className="px-8 py-10 space-y-8 text-slate-600">
-          
           <section>
             <h2 className="text-xl font-bold text-slate-900 mb-3">1. Our Commitment</h2>
             <p>
@@ -88,7 +83,6 @@ const PrivacyPage = () => {
               <strong>Address:</strong> S. No. 80/8 Akshay Industries, Mahadev Nagar, Nanded Phata, Pune - 411041.
             </p>
           </div>
-
         </div>
       </div>
     </div>

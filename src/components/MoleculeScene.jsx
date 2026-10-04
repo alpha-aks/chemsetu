@@ -10,7 +10,6 @@ export default function MoleculeScene() {
   const currentRotationX = useRef(0);
 
   useEffect(() => {
-    // Scene setup
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
@@ -19,7 +18,6 @@ export default function MoleculeScene() {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     mountRef.current.appendChild(renderer.domElement);
 
-    // Lighting
     const ambientLight = new THREE.AmbientLight(0x404040, 2);
     scene.add(ambientLight);
 
@@ -31,24 +29,19 @@ export default function MoleculeScene() {
     pointLight2.position.set(-10, -10, -10);
     scene.add(pointLight2);
 
-    // Create DNA-like structure
     const group = new THREE.Group();
     
-    // Parameters for the DNA
     const radius = 1.5;
     const tubularSegments = 200;
     const q = 3;
 
-    // Create the main helix
     for (let i = 0; i < tubularSegments; i++) {
       const t = (i / tubularSegments) * Math.PI * 2 * 10;
       
-      // Base position
       const x = radius * Math.cos(q * t);
       const y = radius * Math.sin(q * t);
       const z = (i / 10) - 10;
       
-      // Create sphere for the node
       const sphereGeometry = new THREE.SphereGeometry(0.15, 16, 16);
       const sphereMaterial = new THREE.MeshPhongMaterial({ 
         color: i % 2 === 0 ? 0x00ffaa : 0x00aaff,
@@ -60,13 +53,11 @@ export default function MoleculeScene() {
       sphere.position.set(x, y, z);
       group.add(sphere);
       
-      // Create connections between nodes
       if (i > 0) {
         const prevT = ((i - 1) / tubularSegments) * Math.PI * 2 * 10;
         const prevX = radius * Math.cos(q * prevT);
         const prevY = radius * Math.sin(q * prevT);
         
-        // Create a line between current and previous node
         const lineGeometry = new THREE.BufferGeometry().setFromPoints([
           new THREE.Vector3(prevX, prevY, (i - 1) / 10 - 10),
           new THREE.Vector3(x, y, z)
@@ -83,7 +74,6 @@ export default function MoleculeScene() {
         group.add(line);
       }
       
-      // Create connecting lines between the two helixes
       if (i % 5 === 0) {
         const oppositeX = -x;
         const oppositeY = -y;
@@ -105,7 +95,6 @@ export default function MoleculeScene() {
       }
     }
     
-    // Add some floating particles
     const particlesGeometry = new THREE.BufferGeometry();
     const particlesCount = 1000;
     const posArray = new Float32Array(particlesCount * 3);
@@ -129,25 +118,19 @@ export default function MoleculeScene() {
     
     scene.add(group);
     
-    // Camera position
     camera.position.z = 5;
     
-    // Animation
     const animate = () => {
       requestAnimationFrame(animate);
       
-      // Smooth rotation based on mouse position
       currentRotation.current += (targetRotation.current - currentRotation.current) * 0.05;
       currentRotationX.current += (targetRotationX.current - currentRotationX.current) * 0.05;
       
-      // Apply rotation to the group
       group.rotation.y = currentRotation.current;
       group.rotation.x = currentRotationX.current;
       
-      // Auto-rotate slowly
       group.rotation.y += 0.001;
       
-      // Animate particles
       const positions = particlesGeometry.attributes.position.array;
       for (let i = 0; i < positions.length; i += 3) {
         positions[i + 1] += 0.001;
@@ -158,21 +141,18 @@ export default function MoleculeScene() {
       renderer.render(scene, camera);
     };
     
-    // Handle window resize
     const handleResize = () => {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(window.innerWidth * 0.4, window.innerHeight * 0.6);
     };
     
-    // Handle mouse move for interactive rotation
     const handleMouseMove = (event) => {
       mouse.current = {
         x: (event.clientX / window.innerWidth) * 2 - 1,
         y: -(event.clientY / window.innerHeight) * 2 + 1
       };
       
-      // Update target rotation based on mouse position
       targetRotation.current = mouse.current.x * 0.5;
       targetRotationX.current = mouse.current.y * 0.2;
     };
@@ -182,7 +162,6 @@ export default function MoleculeScene() {
     
     animate();
     
-    // Cleanup
     const mountNode = mountRef.current;
     return () => {
       window.removeEventListener('resize', handleResize);

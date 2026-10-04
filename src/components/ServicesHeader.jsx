@@ -2,11 +2,9 @@ import React, { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Sphere, Torus, Environment, ContactShadows, Float } from '@react-three/drei';
 
-// --- 3D Atom Component ---
 const Atom = () => {
   const atomRef = useRef();
   
-  // Rotate the entire atom group slowly
   useFrame((state, delta) => {
     if (atomRef.current) {
       atomRef.current.rotation.y += delta * 0.05;
@@ -17,7 +15,6 @@ const Atom = () => {
   return (
     <Float speed={2} rotationIntensity={1} floatIntensity={2}>
       <group ref={atomRef} scale={2.5}>
-        {/* Core Nucleus (Green & Blue mix) */}
         <Sphere args={[0.4, 64, 64]} castShadow receiveShadow>
           <meshPhysicalMaterial 
             color="#00A651" 
@@ -30,7 +27,6 @@ const Atom = () => {
           />
         </Sphere>
         
-        {/* Electron Rings (Rotating Torus shapes) */}
         <ElectronRing rotation={[1.5, 0, 0]} color="#2E3192" speed={0.8} />
         <ElectronRing rotation={[0, 1.5, 0]} color="#00A651" speed={1.0} />
         <ElectronRing rotation={[0.8, 0.8, 0]} color="#3b82f6" speed={0.7} />
@@ -39,7 +35,6 @@ const Atom = () => {
   );
 };
 
-// Individual Electron Ring Helper
 const ElectronRing = ({ rotation, color, speed }) => {
   const ringRef = useRef();
   useFrame((state, delta) => {
@@ -61,7 +56,6 @@ const ElectronRing = ({ rotation, color, speed }) => {
           metalness={1}
         />
       </Torus>
-      {/* Small Electron Sphere on the ring */}
       <mesh position={[1.8, 0, 0]} castShadow>
          <sphereGeometry args={[0.12, 32, 32]} />
          <meshStandardMaterial color={color} emissive="white" emissiveIntensity={2} />
@@ -70,23 +64,16 @@ const ElectronRing = ({ rotation, color, speed }) => {
   );
 };
 
-// --- Main Header Component ---
 const ServicesHeader = () => {
   return (
     <div className="relative w-full min-h-screen bg-white overflow-hidden flex items-center">
-      
-      {/* Background Subtle Grid Pattern */}
       <div className="absolute inset-0 opacity-[0.03]" 
            style={{ backgroundImage: 'radial-gradient(#2E3192 1px, transparent 1px)', backgroundSize: '30px 30px' }}>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 py-12 md:py-0 w-full">
         <div className="flex flex-col md:flex-row items-center justify-between gap-10 h-full">
-          
-          {/* Left Side: 3D Atom Animation */}
-          {/* On Mobile: Order-1 (Top). On Desktop: Order-1 (Left) */}
           <div className="w-full h-[300px] md:w-1/2 md:h-[600px] order-1 md:order-1 flex items-center justify-center relative">
-             {/* Glow Effect behind Atom */}
              <div className="absolute w-64 h-64 bg-green-400/10 rounded-full blur-3xl animate-pulse"></div>
              
              <Canvas shadows camera={{ position: [0, 0, 6], fov: 45 }}>
@@ -108,8 +95,6 @@ const ServicesHeader = () => {
              </Canvas>
           </div>
 
-          {/* Right Side: Text Content */}
-          {/* On Mobile: Order-2 (Bottom). On Desktop: Order-2 (Right) */}
           <div className="w-full md:w-1/2 text-center md:text-left order-2 md:order-2 z-10">
             <h2 className="text-sm font-bold tracking-widest text-green-600 uppercase mb-2">
               Advanced Capabilities
@@ -118,7 +103,6 @@ const ServicesHeader = () => {
               Our Scientific <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-green-600 relative">
                 Expertise
-                {/* Decorative Underline */}
                 <svg className="absolute w-full h-3 -bottom-2 left-0 text-green-500" viewBox="0 0 200 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.00025 6.99997C25.7509 1.37464 90.6283 -5.12055 125.027 4.57743C158.481 14.008 197.935 3.99996 197.935 3.99996" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/></svg>
               </span>
             </h1>
@@ -128,7 +112,6 @@ const ServicesHeader = () => {
               <span className="font-semibold text-green-600"> commercial production</span>.
             </p>
           </div>
-
         </div>
       </div>
     </div>

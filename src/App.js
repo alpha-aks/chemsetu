@@ -28,6 +28,7 @@ const HomePage = () => (
     <SEO 
       title="Home" 
       description="ChemSetu - Bridging Science and Synthesis. Your trusted partner for high-purity API Impurities, advanced Intermediates, and complex Custom Synthesis solutions."
+      url="/"
     />
     <HeroSection />
     <BrandSection />

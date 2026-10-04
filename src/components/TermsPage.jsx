@@ -11,10 +11,7 @@ const TermsPage = () => {
         url="/terms"
       />
       <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-100">
-        
-        {/* Header */}
         <div className="bg-slate-900 px-8 py-10 text-center relative overflow-hidden">
-            {/* Abstract Background Decoration */}
             <div className="absolute top-0 left-0 w-full h-full opacity-10">
                 <div className="absolute top-10 left-10 w-32 h-32 bg-green-500 rounded-full blur-3xl"></div>
                 <div className="absolute bottom-10 right-10 w-32 h-32 bg-blue-500 rounded-full blur-3xl"></div>
@@ -25,9 +22,7 @@ const TermsPage = () => {
             <p className="text-slate-400 mt-2 relative z-10">Last Updated: December 2025</p>
         </div>
 
-        {/* Content */}
         <div className="px-8 py-10 space-y-8 text-slate-600">
-          
           <section>
             <h2 className="text-xl font-bold text-slate-900 mb-3 flex items-center gap-2">
               <FileText className="w-5 h-5 text-blue-600" /> 1. Introduction
@@ -86,7 +81,6 @@ const TermsPage = () => {
               Questions about these terms? Contact us at <a href="mailto:info.chemsetu@gmail.com" className="text-blue-600 hover:underline">info.chemsetu@gmail.com</a>.
             </p>
           </div>
-
         </div>
       </div>
     </div>

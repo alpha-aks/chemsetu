@@ -145,7 +145,6 @@ const ServicesGrid = () => {
               className="group relative flex flex-col overflow-hidden rounded-2xl bg-white dark:bg-slate-950 border border-slate-100 dark:border-slate-800 shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
               transition={{ type: "spring", stiffness: 300 }}
             >
-              {/* Image Header */}
               <div className="relative h-44 w-full overflow-hidden">
                 <img
                   src={service.image?.src}
@@ -156,14 +155,12 @@ const ServicesGrid = () => {
                 <div className="absolute inset-0 bg-black/20 transition-opacity group-hover:bg-black/10" />
               </div>
 
-              {/* Floating Icon Circle */}
               <div className="relative flex justify-center">
                 <div className="absolute -top-10 flex h-20 w-20 items-center justify-center rounded-full border-[6px] border-white dark:border-slate-950 bg-white dark:bg-slate-950 shadow-lg text-primary transition-transform duration-300 group-hover:scale-110">
                   <service.Icon />
                 </div>
               </div>
 
-              {/* Text Body */}
               <div className="flex flex-1 flex-col items-center p-8 pt-12 text-center">
                 <h3 className="mb-3 text-xl font-bold text-slate-800 dark:text-slate-100 transition-colors group-hover:text-secondary">
                   {service.title}

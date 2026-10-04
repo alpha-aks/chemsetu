@@ -25,7 +25,6 @@ const Footer = () => {
 
       <div className="relative container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-start text-left">
-          {/* Col 1: Brand */}
           <div className="space-y-5">
             <div className="flex items-center gap-3">
               <div className="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center ring-1 ring-white/30">
@@ -63,7 +62,6 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Col 2: Links */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 justify-items-start">
             <div>
               <h4 className="text-green-400 font-semibold mb-4">Company</h4>
@@ -103,7 +101,6 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Col 3: Contact */}
           <div className="text-left">
             <h4 className="text-green-400 font-semibold mb-4">Contact</h4>
             <ul className="space-y-4 text-slate-300">

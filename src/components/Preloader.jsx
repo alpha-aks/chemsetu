@@ -12,7 +12,6 @@ const Preloader = () => {
       exit="exit"
     >
       <div className="absolute inset-0 flex z-0">
-        {/* Left half */}
         <motion.div
           className="relative w-1/2 h-full bg-white"
           variants={{
@@ -22,7 +21,6 @@ const Preloader = () => {
           transition={transition}
         />
 
-        {/* Right half */}
         <motion.div
           className="relative w-1/2 h-full bg-slate-50"
           variants={{
@@ -33,7 +31,6 @@ const Preloader = () => {
         />
       </div>
 
-      {/* Logo: centered on screen, glowing while loading */}
       <motion.div
         className="absolute inset-0 z-20 flex items-center justify-center"
         variants={{

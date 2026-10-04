@@ -6,7 +6,7 @@ import { PrismicRichText } from '@prismicio/react';
 import SEO from './SEO';
 
 const CompoundDetails = () => {
-  const { id } = useParams(); // This is actually the UID from the URL
+  const { id } = useParams();
   const [documentByUid, { state: uidState }] = usePrismicDocumentByUID('compound', id);
   const [documentById, { state: idState }] = usePrismicDocumentByID(id);
   const document = documentByUid || documentById;
@@ -89,7 +89,6 @@ const CompoundDetails = () => {
           Back to Library
         </Link>
 
-        {/* Centered Header */}
         <div className="text-center mb-10">
           <div className="text-xs font-bold text-slate-400 uppercase tracking-wider">Product Code</div>
           <h1 className="mt-2 text-4xl md:text-6xl font-semibold font-serif text-blue-700 tracking-tight">
@@ -102,9 +101,7 @@ const CompoundDetails = () => {
           ) : null}
         </div>
 
-        {/* Two-Column Spec Sheet */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-          {/* Left Column: Core Metadata */}
           <div className="bg-white rounded-2xl border border-slate-100 p-6 md:p-8">
             <h2 className="text-lg font-extrabold text-slate-900 mb-6 flex items-center">
               <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
@@ -132,7 +129,6 @@ const CompoundDetails = () => {
             </ul>
           </div>
 
-          {/* Right Column: Chemical Structure */}
           <div className="bg-slate-50 rounded-2xl border border-slate-100 p-6 md:p-8">
             <div className="text-sm font-bold text-slate-700 mb-4">
               Chemical Structure:{' '}
@@ -154,7 +150,6 @@ const CompoundDetails = () => {
           </div>
         </div>
 
-        {/* Extended Description */}
         <div className="mt-12 pt-10 border-t border-slate-100">
           <h3 className="text-xl md:text-2xl font-extrabold text-slate-900 mb-4">DESCRIPTION :-</h3>
 

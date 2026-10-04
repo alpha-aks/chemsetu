@@ -4,7 +4,7 @@ import SEO from './SEO';
 
 const ContactSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'error' | null
+  const [submitStatus, setSubmitStatus] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -73,7 +73,6 @@ const ContactSection = () => {
         url="/contact"
         schema={localBusinessSchema}
       />
-      {/* Background Decorations */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <div className="absolute -top-[10%] -left-[10%] w-[50%] h-[50%] bg-blue-200/20 rounded-full blur-3xl"></div>
         <div className="absolute top-[20%] -right-[10%] w-[40%] h-[40%] bg-green-200/20 rounded-full blur-3xl"></div>
@@ -81,7 +80,6 @@ const ContactSection = () => {
       </div>
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 w-full relative z-10">
-        {/* Left Column */}
         <div className="flex flex-col justify-center">
           <div className="mb-8 md:mb-12">
              <span className="inline-block py-1 px-3 rounded-full bg-blue-100 text-blue-700 text-xs font-bold tracking-wider uppercase mb-4">
@@ -99,7 +97,6 @@ const ContactSection = () => {
           </div>
 
           <div className="space-y-4 md:space-y-6">
-            {/* Address Card - Clickable */}
             <a 
               href="https://www.google.com/maps/search/?api=1&query=S.+No.+80%2F8+Akshay+Industries%2C+Mahadev+Nagar%2C+Nanded+Phata%2C+Pune+-+411041"
               target="_blank"
@@ -120,7 +117,6 @@ const ContactSection = () => {
               </div>
             </a>
 
-            {/* Phone Card - Clickable */}
             <a 
               href="tel:+918805245811"
               className="group bg-white rounded-2xl shadow-sm hover:shadow-md p-5 flex items-center gap-4 border border-slate-100 transition-all duration-300 active:scale-[0.98]"
@@ -139,7 +135,6 @@ const ContactSection = () => {
               </div>
             </a>
 
-            {/* Mail Card - Clickable */}
             <a 
               href="mailto:info.chemsetu@gmail.com"
               className="group bg-white rounded-2xl shadow-sm hover:shadow-md p-5 flex items-center gap-4 border border-slate-100 transition-all duration-300 active:scale-[0.98]"
@@ -160,7 +155,6 @@ const ContactSection = () => {
           </div>
         </div>
 
-        {/* Right Column - Contact Form */}
         <div className="bg-white rounded-3xl shadow-xl p-6 md:p-8 border border-slate-100 relative overflow-hidden">
           <div className="relative z-10">
             <h2 className="text-2xl font-bold text-slate-900 mb-6">Send a Message</h2>
@@ -180,7 +174,6 @@ const ContactSection = () => {
             )}
 
             <form onSubmit={handleSubmit} className="space-y-5">
-              {/* Hidden fields for FormSubmit configuration */}
               <input type="hidden" name="_subject" value="New Contact Form Submission from ChemSetu Website" />
               <input type="hidden" name="_captcha" value="false" />
               <input type="hidden" name="_template" value="table" />

@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import { Microscope, ChevronRight, ArrowRight, Quote } from 'lucide-react';
 import SEO from './SEO';
 
-// --- Updated Mock Data for Team with new fields ---
 const teamMembers = [
   {
     name: "Mr. Sachin J. Mahangare",
@@ -30,7 +29,6 @@ const teamMembers = [
   }
 ];
 
-// --- Animation Variants ---
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
@@ -46,7 +44,6 @@ const staggerContainer = {
   }
 };
 
-// --- New Team Member Profile Component ---
 const TeamMemberProfile = ({ member }) => {
   return (
     <motion.div 
@@ -54,7 +51,6 @@ const TeamMemberProfile = ({ member }) => {
       className="bg-white p-6 md:p-10 rounded-3xl shadow-sm border border-slate-100"
     >
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        {/* Image */}
         <div className="lg:col-span-4">
           <div className="relative rounded-3xl overflow-hidden bg-slate-50 border border-slate-200 shadow-sm">
             <div className="aspect-[4/5] w-full">
@@ -69,12 +65,10 @@ const TeamMemberProfile = ({ member }) => {
               </figure>
             </div>
 
-            {/* Subtle frame */}
             <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-slate-200" />
           </div>
         </div>
 
-        {/* Content */}
         <div className="lg:col-span-8 w-full flex flex-col">
           <div className="mb-6">
             <h3 className="text-2xl md:text-3xl font-bold text-[#0a192f] mb-2">{member.name}</h3>
@@ -172,9 +166,7 @@ const AboutUs = () => {
         schema={aboutSchema}
       />
       
-      {/* --- 1. Hero Section --- */}
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden bg-[#0a192f] text-white">
-        {/* Abstract DNA Background Effect */}
         <div className="absolute inset-0 opacity-20">
             <div className="absolute top-10 left-10 w-64 h-64 bg-green-500 rounded-full blur-[100px]"></div>
             <div className="absolute bottom-10 right-10 w-80 h-80 bg-blue-600 rounded-full blur-[120px]"></div>
@@ -199,7 +191,6 @@ const AboutUs = () => {
         </div>
       </section>
 
-      {/* --- 2. Our Mission & Vision --- */}
       <section className="py-20 px-6 container mx-auto">
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <motion.div 
@@ -240,7 +231,6 @@ const AboutUs = () => {
         </div>
       </section>
 
-      {/* --- 3. The Team (Redesigned based on "Director's Edge") --- */}
       <section className="py-20 bg-slate-100">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
@@ -264,7 +254,6 @@ const AboutUs = () => {
         </div>
       </section>
 
-      {/* --- 4. Values / Why Us --- */}
       <section className="py-20 px-6 container mx-auto">
         <div className="bg-[#0a192f] rounded-3xl p-8 md:p-16 text-white relative overflow-hidden">
            <Microscope className="absolute top-10 right-10 w-64 h-64 text-white opacity-5 rotate-12" />
