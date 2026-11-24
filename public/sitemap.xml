@@ -1,44 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://www.chemsetu.in/</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://www.chemsetu.in/chemsetu-banner.png</image:loc>
+      <image:title>ChemSetu Lifesciences - Bridging Science and Synthesis</image:title>
+      <image:caption>ChemSetu - High-purity API Impurities, Intermediates and Custom Synthesis</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.chemsetu.in/chemsetu-logo.png</image:loc>
+      <image:title>ChemSetu Logo</image:title>
+      <image:caption>ChemSetu Lifesciences Private Limited Corporate Logo</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://www.chemsetu.in/services</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.chemsetu.in/compounds</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.chemsetu.in/about</loc>
-    <lastmod>2026-09-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2026-11-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.chemsetu.in/WhatsApp%20Image%202026-10-26%20at%2022.20.32.jpeg</image:loc>
+      <image:title>Mr. Sachin J. Mahangare - Director and Founder</image:title>
+      <image:caption>Mr. Sachin J. Mahangare, Director and Founder of ChemSetu Lifesciences Private Limited Pune</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.chemsetu.in/sachin-mahangare-director.jpeg</image:loc>
+      <image:title>Mr. Sachin J. Mahangare - Director and Founder - ChemSetu</image:title>
+      <image:caption>Mr. Sachin J. Mahangare - Director and Founder of ChemSetu Lifesciences</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.chemsetu.in/WhatsApp%20Image%202026-10-26%20at%2022.20.32%20(1).jpeg</image:loc>
+      <image:title>Mrs. Rupali Mahangare - Director</image:title>
+      <image:caption>Mrs. Rupali Mahangare, Director of ChemSetu Lifesciences Private Limited Pune</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.chemsetu.in/rupali-mahangare-director.jpeg</image:loc>
+      <image:title>Mrs. Rupali Mahangare - Director - ChemSetu</image:title>
+      <image:caption>Mrs. Rupali Mahangare - Director of ChemSetu Lifesciences</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.chemsetu.in/lab-infra.png</image:loc>
+      <image:title>ChemSetu R&amp;D Laboratory Infrastructure</image:title>
+      <image:caption>ChemSetu Lifesciences State of the Art Laboratory in Pune</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://www.chemsetu.in/contact</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.chemsetu.in/terms</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://www.chemsetu.in/privacy</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>

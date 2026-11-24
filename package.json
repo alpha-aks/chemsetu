@@ -4,8 +4,7 @@
   "homepage": "https://www.chemsetu.in",
   "private": true,
   "engines": {
-    "node": ">=20 <21",
-    "npm": ">=10 <11"
+    "node": "26.x"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",

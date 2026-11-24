@@ -9,7 +9,7 @@ const teamMembers = [
     name: "Mr. Sachin J. Mahangare",
     role: "Director & Founder",
     imageUrl: "/WhatsApp Image 2026-10-26 at 22.20.32.jpeg",
-    imageAlt: "Mr. Sachin J. Mahangare - Director & Founder",
+    imageAlt: "Mr. Sachin J. Mahangare - Director & Founder of ChemSetu Lifesciences Private Limited Pune",
     education: "M.Sc. (Organic Chemistry) from Fergusson College, Pune University (2003)",
     experience: "19+ Years in Research & Industry",
     companies: "Lupin, Nycomed, Teva, Emcure, Deepak Nitrite",
@@ -20,7 +20,7 @@ const teamMembers = [
     name: "Mrs. Rupali Mahangare",
     role: "Director",
     imageUrl: "/WhatsApp Image 2026-10-26 at 22.20.32 (1).jpeg",
-    imageAlt: "Mrs. Rupali Mahangare - Director",
+    imageAlt: "Mrs. Rupali Mahangare - Director of ChemSetu Lifesciences Private Limited Pune",
     education: "M.Sc. (Organic Chemistry) from Pune University",
     experience: "10+ Years in Research & Industry",
     companies: "Glenmark Pharmaceuticals, Getz Pharma, Emcure Pharma Ltd",
@@ -54,14 +54,21 @@ const TeamMemberProfile = ({ member }) => {
         <div className="lg:col-span-4">
           <div className="relative rounded-3xl overflow-hidden bg-slate-50 border border-slate-200 shadow-sm">
             <div className="aspect-[4/5] w-full">
-              <figure className="w-full h-full">
+              <figure className="w-full h-full" itemScope itemType="https://schema.org/ImageObject">
                 <img
                   src={member.imageUrl}
                   alt={member.imageAlt || `${member.name} - ${member.role}`}
+                  title={`${member.name} - ${member.role} | ChemSetu`}
                   className="w-full h-full object-cover"
-                  loading="lazy"
+                  loading="eager"
+                  fetchPriority="high"
+                  decoding="async"
+                  width="400"
+                  height="500"
+                  itemProp="contentUrl"
                 />
-                <figcaption className="sr-only">{member.name} — {member.role}</figcaption>
+                <meta itemProp="caption" content={member.imageAlt || `${member.name} - ${member.role}`} />
+                <figcaption className="sr-only">{member.name} — {member.role} of ChemSetu Lifesciences</figcaption>
               </figure>
             </div>
 
@@ -136,21 +143,30 @@ const AboutUs = () => {
       ...teamMembers.flatMap((member) => {
         const personId = `${siteUrl}/#${encodeURIComponent(member.name.toLowerCase().replace(/\s+/g, '-'))}`;
         const imageId = `${personId}-image`;
+        const absoluteImageUrl = member.imageUrl.startsWith('http') ? member.imageUrl : `${siteUrl}${encodeURI(member.imageUrl)}`;
         return [
           {
             "@type": "Person",
             "@id": personId,
             "name": member.name,
             "jobTitle": member.role,
-            "image": { "@id": imageId },
+            "image": {
+              "@type": "ImageObject",
+              "@id": imageId,
+              "url": absoluteImageUrl,
+              "contentUrl": absoluteImageUrl,
+              "caption": member.imageAlt || `${member.name} - ${member.role} of ChemSetu Lifesciences`
+            },
             "worksFor": { "@id": organizationId },
             "description": [member.education, member.experience, member.expertise].filter(Boolean).join(' | ')
           },
           {
             "@type": "ImageObject",
             "@id": imageId,
-            "url": member.imageUrl.startsWith('http') ? member.imageUrl : `${siteUrl}${encodeURI(member.imageUrl)}`,
-            "caption": `${member.name} - ${member.role}`
+            "url": absoluteImageUrl,
+            "contentUrl": absoluteImageUrl,
+            "name": `${member.name} - ${member.role}`,
+            "caption": member.imageAlt || `${member.name} - ${member.role} of ChemSetu Lifesciences`
           }
         ];
       })
