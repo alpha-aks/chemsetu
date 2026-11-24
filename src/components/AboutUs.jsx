@@ -8,7 +8,7 @@ const teamMembers = [
   {
     name: "Mr. Sachin J. Mahangare",
     role: "Director & Founder",
-    imageUrl: "https://images.prismic.io/chemsetu/aanRyFxvIZEnjYZW_sachindirectorfounder.JPG?auto=format,compress",
+    imageUrl: "/WhatsApp Image 2026-10-26 at 22.20.32.jpeg",
     imageAlt: "Mr. Sachin J. Mahangare - Director & Founder",
     education: "M.Sc. (Organic Chemistry) from Fergusson College, Pune University (2003)",
     experience: "19+ Years in Research & Industry",
@@ -19,7 +19,7 @@ const teamMembers = [
   {
     name: "Mrs. Rupali Mahangare",
     role: "Director",
-    imageUrl: "https://images.prismic.io/chemsetu/aanRuVxvIZEnjYZV_Rupalidirector.JPG?auto=format,compress",
+    imageUrl: "/WhatsApp Image 2026-10-26 at 22.20.32 (1).jpeg",
     imageAlt: "Mrs. Rupali Mahangare - Director",
     education: "M.Sc. (Organic Chemistry) from Pune University",
     experience: "10+ Years in Research & Industry",
@@ -149,7 +149,7 @@ const AboutUs = () => {
           {
             "@type": "ImageObject",
             "@id": imageId,
-            "url": member.imageUrl,
+            "url": member.imageUrl.startsWith('http') ? member.imageUrl : `${siteUrl}${encodeURI(member.imageUrl)}`,
             "caption": `${member.name} - ${member.role}`
           }
         ];
